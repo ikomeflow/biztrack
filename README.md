@@ -4,6 +4,12 @@ A mobile-first business sales, expense and profit tracker by Ikomeflow.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
+## Simpler screens — 1.4
+
+Daily screens use short headings and labels without repeated descriptions. Overview retains all profit, sales, expense, margin, activity, category and recent-entry information. The entry form starts with amount and description; **More options** holds date, currency and category, and opens automatically when editing. Settings groups Backups, PIN & recovery, and About your data into independent, keyboard-accessible sections. Important local-storage, backup, recovery and unencrypted-export guidance remains available. Locking clears drafts and closes these sections.
+
+This release retains fast offline startup and complete search/export across paged lists. It changes no ledger schema, encryption, PIN, recovery key or storage key. A new matching app/style/cache version preserves safe updates from already-cached installations.
+
 ## Faster loading — 1.3
 
 The app bundles and minifies startup scripts and styles, includes the theme bootstrap with an exact CSP hash, and loads PDF code only when a PDF is requested. No runtime package or remote font was added. Readable UI sources are in `src/`; the ledger, encryption and recovery modules keep their existing format and storage key.

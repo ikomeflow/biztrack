@@ -1,3 +1,14 @@
+# Version 1.4 simplified interface — 17 October 2026
+
+- **26 unit tests and 148 browser checks passed**: 67 general/business/mobile, 35 PIN/recovery, 23 performance/offline/upgrade, 22 new concise-interface checks and one portable-copy flow.
+- New entry options start closed, keyboard opens all fields, saved currencies/categories round-trip exactly, editing opens the saved options, and each new entry starts closed again.
+- Backups, PIN/recovery and privacy disclosures start closed, work independently by keyboard, expose their existing actions, and never modify ledger bytes. Locking closes all sections and clears private text and drafts.
+- Short overview and PIN headings, no creator byline on the PIN gate, mobile font sizing and Settings widths from 320 to 1440 px verified. All four screens and day/night behavior pass the existing mobile/browser suite.
+- Offline PIN/recovery, 250-row full exports, waiting-update form protection, failed candidate retention and the portable copy all pass again. No production PINs, keys or records were read or used.
+- Screenshots inspected for overview, settings and entry options. No runtime errors. Current assets are app-v3.mjs and styles-v3.css; report-v2.mjs, original vault/core modules and theme remain unchanged.
+
+---
+
 # Version 1.3 performance verification — 17 October 2026
 
 - **26 unit tests passed**, including six cache/version/update isolation tests.
