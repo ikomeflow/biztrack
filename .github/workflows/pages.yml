@@ -27,7 +27,8 @@ jobs:
           node --check dist/core.mjs
           node --check dist/report.mjs
           node --check dist/theme.js
-      - name: Test calculations, backups and reports
+          node --check dist/vault.mjs
+      - name: Test calculations, encryption, recovery and backups
         run: npm test
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
