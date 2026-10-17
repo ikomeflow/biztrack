@@ -26,6 +26,7 @@ jobs:
           node --check dist/app.mjs
           node --check dist/core.mjs
           node --check dist/report.mjs
+          node --check dist/theme.js
       - name: Test calculations, backups and reports
         run: npm test
       - uses: actions/configure-pages@v5
