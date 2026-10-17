@@ -4,6 +4,10 @@ A mobile-first business sales, expense and profit tracker by Ikomeflow.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
+## Compact controls — 1.4.1
+
+Day/night controls now use a small sun/moon icon, including on the PIN gate. The visible circle is 32 px with a 44 px touch area, keyboard focus, descriptive labels and saved appearance preferences. Demo status and Exit demo appear together in the footer on all four screens. Sample records remain separate from personal records.
+
 ## Simpler screens — 1.4
 
 Daily screens use short headings and labels without repeated descriptions. Overview retains all profit, sales, expense, margin, activity, category and recent-entry information. The entry form starts with amount and description; **More options** holds date, currency and category, and opens automatically when editing. Settings groups Backups, PIN & recovery, and About your data into independent, keyboard-accessible sections. Important local-storage, backup, recovery and unencrypted-export guidance remains available. Locking clears drafts and closes these sections.

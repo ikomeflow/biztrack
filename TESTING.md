@@ -1,3 +1,12 @@
+# Version 1.4.1 compact controls — 17 October 2026
+
+- 26 unit tests, 67 business/mobile browser checks and the portable PIN/save/reload/unlock check pass. Day/night persistence, cross-tab appearance, demo exit, backups, reports and widths from 320 to 1440 px remain covered.
+- Mobile and desktop screenshots inspected: the visible theme circle is smaller, the header has no demo strip, and Demo · Sample records / Exit demo are in the footer. The theme button retains its existing 44 px touch area and accessible name.
+- A duplicate demo label found during QA was removed before packaging. There is exactly one demo-banner element, inside footer. Ledger, PIN and recovery code/format remain unchanged.
+- Publish matching app-v4.mjs, styles-v4.css, index.html and cache v3-20261017-compact-controls together. Older assets remain available for existing offline pages.
+
+---
+
 # Version 1.4 simplified interface — 17 October 2026
 
 - **26 unit tests and 148 browser checks passed**: 67 general/business/mobile, 35 PIN/recovery, 23 performance/offline/upgrade, 22 new concise-interface checks and one portable-copy flow.
