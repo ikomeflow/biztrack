@@ -1,3 +1,11 @@
+# Version 1.4.3 PIN spacing — 17 October 2026
+
+- The deployed PIN input and button shared the same edges but had a zero-pixel vertical gap. The CSS now makes both block-level controls and gives the primary action an explicit 18 px top margin.
+- Build, standalone build, syntax checks and all 26 unit checks pass. Sixteen isolated visual layout checks pass for setup and unlock, light/dark appearance and 320/390/768/1440 px widths: matching edges, 18 px spacing, at least 44 px button height and no horizontal overflow. Screenshots inspected on mobile and desktop.
+- Styles only; app-v5.mjs and the original ledger, PIN, encryption and recovery modules are unchanged. Release styles-v6.css and cache v5-20261017-pin-spacing with matching HTML/build files.
+
+---
+
 # Version 1.4.2 minimal PIN screen — 17 October 2026
 
 - Build, standalone build and syntax checks pass. All 26 unit checks pass, including encryption, recovery, record preservation and coherent offline caching.

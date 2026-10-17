@@ -4,6 +4,10 @@ A mobile-first business sales, expense and profit tracker by Ikomeflow.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
+## PIN button spacing — 1.4.3
+
+The PIN input and primary action keep matching left/right edges, with an explicit 18 px gap so the focus ring does not touch the button. This also applies to first-time PIN setup. Application and security logic remain unchanged.
+
 ## Minimal PIN screen — 1.4.2
 
 The PIN screen shows only the brand, PIN form, Unlock action and Forgot PIN link. Backup and demo tools remain available under More options. Repeated instructions and the appearance toggle are removed from this screen; the saved/device appearance and the toggle inside the workspace remain available. Warnings about preserved original records are shown when relevant. The encrypted ledger format, storage keys, PIN and recovery behavior are unchanged. Matching app-v5.mjs, styles-v5.css and a new offline cache keep the release coherent.
