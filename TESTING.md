@@ -15,7 +15,7 @@
 
 - The built-in browser allows HTTP/HTTPS addresses and blocked direct `file:` navigation. Interactive browser testing used the web-served modular app. The standalone file shares the tested logic but was not opened interactively in that browser.
 - Mobile layouts were checked in desktop browser viewports; physical iOS and Android devices were not tested.
-- GitHub Pages configuration and relative asset paths are included. No GitHub repository or live GitHub Pages deployment was created.
+- The repository and GitHub Pages app were published on 17 October 2026. The hosted workflow passed script checks, all nine unit tests and publication. The public HTTPS app and homepage Work card were checked. See `DEPLOYMENT.md` for addresses and integration details.
 - PDF reports embed rendered page images. Text is visually readable but not selectable; CSV preserves full transaction text.
 
 Source and storage remain separate from FlowTrack. No FlowTrack files were modified.

@@ -2,9 +2,11 @@
 
 A mobile-first business sales, expense and profit tracker by Futura Group.
 
+Live app: [ikomeflow.github.io/biztrack](https://ikomeflow.github.io/biztrack/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
+
 ## Use it
 
-For a direct local copy, open the accompanying **BizTrack.html** in a modern browser. It contains the entire app. File-based browser storage varies between browsers, so keep JSON backups and use a hosted address for long-term daily use.
+For a direct local copy, run `node build-standalone.mjs`, then open the generated `../BizTrack.html` in a modern browser. It contains the entire app. File-based browser storage varies between browsers, so keep JSON backups and use a hosted address for long-term daily use.
 
 For a hosted preview, serve the `dist/` folder with any static web server. With Node.js 20 or later:
 
@@ -41,14 +43,14 @@ Profit is recorded sales minus recorded expenses. BizTrack is a simple cash trac
 
 1. Create a separate repository for BizTrack, then upload **the contents of this folder**, including `.github/`, to its `main` branch. Do not put the files inside another `biztrack/` folder in the repository.
 2. In repository **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source.
-3. Run **Deploy BizTrack to GitHub Pages** from the Actions tab, or push a commit to `main`.
+3. Run **Test and deploy BizTrack** from the Actions tab, or push a commit to `main`.
 4. GitHub displays the published URL when deployment finishes.
 
 The included workflow publishes `dist/` without a build. All app asset URLs are relative, so both a project path such as `/biztrack/` and a root domain work. If your default branch has a different name, update the branch in `.github/workflows/pages.yml`.
 
 Alternatively, publish the contents of `dist/` as the root of a branch and configure Pages to deploy from that branch. Include the `.nojekyll` file.
 
-The app has been prepared for GitHub Pages; it is not automatically published to a GitHub repository.
+The main repository uses GitHub Actions to check the scripts, run the unit tests and publish `dist/`. Forks or independently downloaded copies need their own Pages configuration.
 
 ## Branding
 
