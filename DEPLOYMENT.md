@@ -53,3 +53,8 @@ The app runs independently from WordPress. WordPress does not store business led
 - The public app loaded over HTTPS at the project path, with its logo, styles and scripts working and an empty XAF ledger.
 - The public homepage displayed all four project cards and the BizTrack link pointing to the published app.
 - Version 1.1 local app testing passed 67 browser checks across five viewport widths, including persistent day/night appearance and clearer phone transaction details.
+
+
+## Version 1.3 delivery
+
+The existing custom domain, GitHub repository and homepage link are unchanged. The workflow installs exact build dependencies, rebuilds the committed versioned bundle/styles/PDF helper, checks syntax and runs 26 tests before deploying dist. The first complete online visit caches the app; later shell updates use the explicit Update app button. No database, PIN, recovery or ledger migration is required.

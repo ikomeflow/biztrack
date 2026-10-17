@@ -4,6 +4,18 @@ A mobile-first business sales, expense and profit tracker by Ikomeflow.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
+## Faster loading — 1.3
+
+The app bundles and minifies startup scripts and styles, includes the theme bootstrap with an exact CSP hash, and loads PDF code only when a PDF is requested. No runtime package or remote font was added. Readable UI sources are in `src/`; the ledger, encryption and recovery modules keep their existing format and storage key.
+
+After one complete online download, the saved matching app opens immediately without waiting for the connection. Settings reports offline readiness. Future complete updates wait for **Update app**; open transaction, PIN and recovery forms and unsaved settings defer activation. A failed update retains the current complete app. Caching stores only application files, never a decrypted ledger. Keep private JSON backups: caching is not record backup.
+
+Transactions and report previews begin with 100 rows and offer **Show 100 more**. Searches, totals, CSV, PDF and JSON exports still include every matching record. PDF retains its existing 5,000-entry limit.
+
+A controlled local test with 400 ms latency, 50 KB/s download and 4× CPU slowdown reached the working PIN gate in **3.58 seconds before / 1.94 seconds after**. Cached reopening with a stalled document connection took **0.26 seconds**. Real devices and connections vary.
+
+To rebuild, run `npm ci`, `npm run build`, `npm run check` and `npm test`. GitHub Pages rebuilds and tests before deployment. Keep earlier assets for already-open pages; use a new filename and cache version for future shell releases.
+
 ## Use it
 
 For a direct local copy, run `node build-standalone.mjs`, then open the generated `../BizTrack.html` in a modern browser. It contains the entire app. File-based browser storage varies between browsers, so keep JSON backups and use a hosted address for long-term daily use.
@@ -14,7 +26,7 @@ For a hosted preview, serve the `dist/` folder with any static web server. With 
 npm start
 ```
 
-Open **http://127.0.0.1:4175**. No installation of packages, build step, account, API key or external service is required to run the app. The modular `dist/index.html` requires a web server; use the separate standalone file when opening directly from your computer. Regenerate the standalone file after source changes with `node build-standalone.mjs`.
+Open **http://127.0.0.1:4175**. No account, API key or external service is required. Committed dist files can run without a build; rebuilding source or the portable copy requires npm ci first. The modular `dist/index.html` requires a web server; use the separate standalone file when opening directly from your computer. Regenerate the standalone file after source changes with `node build-standalone.mjs`.
 
 The real ledger starts empty. **Explore a demo** opens disposable sample data without changing your records.
 
@@ -55,7 +67,7 @@ Profit is recorded sales minus recorded expenses. BizTrack is a simple cash trac
 3. Run **Test and deploy BizTrack** from the Actions tab, or push a commit to `main`.
 4. GitHub displays the published URL when deployment finishes.
 
-The included workflow publishes `dist/` without a build. All app asset URLs are relative, so both a project path such as `/biztrack/` and a root domain work. If your default branch has a different name, update the branch in `.github/workflows/pages.yml`.
+The included workflow rebuilds and tests before publishing `dist/`. All app asset URLs are relative, so both a project path such as `/biztrack/` and a root domain work. If your default branch has a different name, update the branch in `.github/workflows/pages.yml`.
 
 Alternatively, publish the contents of `dist/` as the root of a branch and configure Pages to deploy from that branch. Include the `.nojekyll` file.
 
@@ -73,7 +85,7 @@ The PIN setup and unlock screen show only the BizTrack name and BT monogram, wit
 npm test
 ```
 
-Twenty unit tests cover calculations, backup validation, CSV/PDF structure, PIN migration, encryption, recovery, incorrect credentials, failed writes, tampering, lock cancellation and concurrent-tab safety.
+Twenty-six unit tests cover offline caching and calculations, backup validation, CSV/PDF structure, PIN migration, encryption, recovery, incorrect credentials, failed writes, tampering, lock cancellation and concurrent-tab safety.
 
 Optional browser tests require Playwright and an installed Chromium-compatible browser:
 

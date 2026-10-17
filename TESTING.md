@@ -1,3 +1,15 @@
+# Version 1.3 performance verification — 17 October 2026
+
+- **26 unit tests passed**, including six cache/version/update isolation tests.
+- **126 browser checks passed**: 67 business/UI/mobile checks, 35 security/recovery checks, 23 new performance/offline/upgrade checks, and one portable-file flow.
+- The new controlled performance suite reproduces the previous startup and compares the new bundle under 400 ms latency, 50 KB/s and 4× CPU slowdown. Working PIN gate: 3,576 ms → 1,936 ms. Cached stalled-network reload: 258 ms.
+- 250 synthetic records and a saved recovery key upgraded from the previous app. Encrypted bytes stayed unchanged until the explicit recovery reset; the original PIN opened exact totals. Search and CSV cover all pages; offline PDF contains all 250 rows on 12 pages. Recovery succeeds offline.
+- First app installation saves a complete shell. Waiting updates preserve unfinished PIN and transaction forms; explicit Update relocks and loads the replacement. A failed candidate download retains the working offline version.
+- Runtime errors: none. No real financial records, PINs or recovery keys were used. Legacy core.mjs, vault.mjs, report.mjs and theme.js remain unchanged.
+- Run optional QA with BIZTRACK_QA_PACKAGES pointing to Playwright dependencies, BIZTRACK_QA_BROWSER to a Chromium executable and BIZTRACK_QA_OUTPUT to a private output directory. Existing suites use BIZTRACK_QA_URL (default localhost:4175); performance-browser.mjs starts its own isolated server.
+
+---
+
 # Verification — 17 October 2026
 
 ## Passed
