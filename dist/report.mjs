@@ -1,9 +1,10 @@
 import {money,totals} from './core.mjs';
 // Render report pages at 2× A4 resolution, then embed each as a JPEG in a PDF.
 // This preserves the browser's Unicode text rendering without remote fonts/libraries.
-export async function makePDF(entries,{businessName,currency,from,to}){
+export async function makePDF(entries,{businessName,currency,from,to},isCancelled=()=>false){
  const rows=[...entries].sort((a,b)=>a.date.localeCompare(b.date));const t=totals(entries);const pages=[];const perPage=22;const count=Math.max(1,Math.ceil(rows.length/perPage));
  for(let p=0;p<count;p++){
+  if(isCancelled())throw Error('Report cancelled because BizTrack locked.');
   const canvas=document.createElement('canvas');canvas.width=1190;canvas.height=1684;const ctx=canvas.getContext('2d');ctx.scale(2,2);ctx.fillStyle='#ffffff';ctx.fillRect(0,0,595,842);
   const text=(s,x,y,size=10,color='#162b4d',bold=false,align='left')=>{ctx.fillStyle=color;ctx.font=`${bold?'600':'400'} ${size}px "Segoe UI", Arial, sans-serif`;ctx.textAlign=align;ctx.fillText(String(s),x,y);};
   const fit=(s,max,size=9)=>{ctx.font=`${size}px "Segoe UI", Arial, sans-serif`;let value=String(s);while(ctx.measureText(value).width>max&&value.length>1)value=value.slice(0,-1);return value!==String(s)?value.slice(0,-1)+'…':value;};
@@ -17,6 +18,6 @@ export async function makePDF(entries,{businessName,currency,from,to}){
   const data=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.94));if(!data)throw Error('Could not create the PDF. Try again.');pages.push(new Uint8Array(await data.arrayBuffer()));
   if(p%5===0)await new Promise(resolve=>setTimeout(resolve,0));
  }
- return imagePagesPDF(pages);
+ if(isCancelled())throw Error('Report cancelled because BizTrack locked.');return imagePagesPDF(pages);
 }
 export function imagePagesPDF(pages){const encoder=new TextEncoder();const chunks=[];const offsets=[0];let length=0;const append=x=>{const bytes=typeof x==='string'?encoder.encode(x):x;chunks.push(bytes);length+=bytes.length;};const object=(id,body)=>{offsets[id]=length;append(`${id} 0 obj\n`);append(body);append('\nendobj\n');};append('%PDF-1.4\n');object(1,'<< /Type /Catalog /Pages 2 0 R >>');object(2,`<< /Type /Pages /Kids [${pages.map((_,i)=>`${3+i*3} 0 R`).join(' ')}] /Count ${pages.length} >>`);pages.forEach((bytes,i)=>{const id=3+i*3;object(id,`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /XObject << /I${i} ${id+1} 0 R >> >> /Contents ${id+2} 0 R >>`);offsets[id+1]=length;append(`${id+1} 0 obj\n<< /Type /XObject /Subtype /Image /Width 1190 /Height 1684 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${bytes.length} >>\nstream\n`);append(bytes);append('\nendstream\nendobj\n');const commands=`q 595 0 0 842 0 0 cm /I${i} Do Q`;object(id+2,`<< /Length ${commands.length} >>\nstream\n${commands}\nendstream`);});const xref=length;append(`xref\n0 ${offsets.length}\n0000000000 65535 f \n`);for(let i=1;i<offsets.length;i++)append(`${String(offsets[i]).padStart(10,'0')} 00000 n \n`);append(`trailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`);return new Blob(chunks,{type:'application/pdf'});}
