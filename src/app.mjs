@@ -6,7 +6,7 @@ const icons={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y
 function icon(name){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]||icons.grid}</svg>`;}
 Object.assign(icons,{moon:'<path d="M20.5 13.1A8.5 8.5 0 0 1 10.9 3.5a8.5 8.5 0 1 0 9.6 9.6Z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>'});
 document.querySelectorAll('[data-icon]').forEach(e=>e.innerHTML=icon(e.dataset.icon));
-function syncThemeControl(){const dark=document.documentElement.dataset.theme==='dark',button=$('#theme-toggle');const label=`Switch to ${dark?'day':'night'} mode`;button.setAttribute('aria-label',label);button.setAttribute('aria-pressed',String(dark));button.title=label;button.innerHTML=icon(dark?'sun':'moon')+`<span>${dark?'Day':'Night'}</span>`;}
+function syncThemeControl(){const dark=document.documentElement.dataset.theme==='dark',button=$('#theme-toggle');const label=`Switch to ${dark?'day':'night'} mode`;button.setAttribute('aria-label',label);button.setAttribute('aria-pressed',String(dark));button.title=label;button.innerHTML=icon(dark?'sun':'moon');}
 document.addEventListener('biztrack-themechange',syncThemeControl);
 $('#theme-toggle').addEventListener('click',()=>document.dispatchEvent(new CustomEvent('biztrack-theme-set',{detail:document.documentElement.dataset.theme==='dark'?'light':'dark'})));
 syncThemeControl();
@@ -110,7 +110,7 @@ function lockApp(broadcast=true){
 function openLedger(value){real=ledger=value;unlocked=true;demo=false;currency=value.defaultCurrency;$('#report-currency').value=currency;showWorkspace();route();$('#main').focus({preventScroll:true});}
 $('#lock-now').addEventListener('click',()=>lockApp());
 $('#gate-theme').addEventListener('click',()=>$('#theme-toggle').click());
-function syncGateTheme(){const dark=document.documentElement.dataset.theme==='dark';$('#gate-theme').textContent=dark?'Day':'Night';$('#gate-theme').setAttribute('aria-label',`Switch to ${dark?'day':'night'} mode`);$('#gate-theme').setAttribute('aria-pressed',String(dark));}
+function syncGateTheme(){const dark=document.documentElement.dataset.theme==='dark';$('#gate-theme').innerHTML=icon(dark?'sun':'moon');$('#gate-theme').title=`Switch to ${dark?'day':'night'} mode`;$('#gate-theme').setAttribute('aria-label',`Switch to ${dark?'day':'night'} mode`);$('#gate-theme').setAttribute('aria-pressed',String(dark));}
 document.addEventListener('biztrack-themechange',syncGateTheme);syncGateTheme();
 $('#gate-form').addEventListener('submit',async e=>{
  e.preventDefault();const button=$('#gate-submit');if(button.disabled||saving)return;const ticket=operation;button.disabled=true;saving=true;$('#gate-error').textContent='';
