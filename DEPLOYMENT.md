@@ -3,7 +3,7 @@
 Published on 17 October 2026.
 
 - Source repository: https://github.com/ikomeflow/biztrack
-- Live application: https://ikomeflow.github.io/biztrack/
+- Live application: https://biztrack.ikomeflow.com/
 - Portfolio entry: https://ikomeflow.com/#work
 - First successful deployment: https://github.com/ikomeflow/biztrack/actions/runs/39026151486
 
@@ -23,6 +23,12 @@ The first opening asks the user to choose and confirm a four-digit PIN. Existing
 
 Local validation: 20 unit tests, 67 app checks, 35 PIN/recovery browser checks, and a portable HTML PIN/save/reload/unlock round trip. Browser tests use disposable profiles and synthetic records only. The production page is checked at its setup gate without creating a PIN or changing the user's ledger.
 
+## Custom app address and branding
+
+The app uses **https://biztrack.ikomeflow.com/**, matching FlowTrack’s own subdomain. GitHub Pages has this custom domain configured. Cloudflare is authoritative for DNS: CNAME name `biztrack`, target `ikomeflow.github.io`, DNS only, TTL Auto. No existing website or FlowTrack records are changed. With Actions publishing, the custom domain is saved in repository Pages settings; a CNAME file is not required.
+
+The homepage BizTrack launch link and icon use the custom domain. The app credits Ikomeflow discreetly inside the workspace and in PDF reports; the PIN gate has no creator byline. This is a presentation-only change to the app: ledger keys, PINs and recovery settings remain unchanged. Browser records belong to their origin. A previous ledger on the GitHub Pages address must be moved with a saved JSON or locked-copy backup; the current in-app browser showed an empty, unconfigured workspace before the domain change.
+
 ## Website Work section
 
 The WordPress homepage is page 5. Its existing Custom HTML content now includes a fourth project card, between FlowTrack and the ebook. Desktop uses four columns, medium screens use two columns, and phones keep the existing stacked layout.
@@ -30,12 +36,12 @@ The WordPress homepage is page 5. Its existing Custom HTML content now includes 
 ```html
 <article class="if-project-card">
   <div class="if-personal-logo if-app-logo">
-    <img src="https://ikomeflow.github.io/biztrack/icon.svg" alt="BizTrack" loading="lazy" decoding="async">
+    <img src="https://biztrack.ikomeflow.com/icon.svg" alt="BizTrack" loading="lazy" decoding="async">
   </div>
   <span class="if-card-label">Business application</span>
   <h3>BizTrack</h3>
   <p>Simple sales, expenses and profit tracking.</p>
-  <a class="if-work-link" href="https://ikomeflow.github.io/biztrack/#overview" target="biztrack-app">Open BizTrack ↗</a>
+  <a class="if-work-link" href="https://biztrack.ikomeflow.com/#overview" target="biztrack-app">Open BizTrack ↗</a>
 </article>
 ```
 
@@ -43,7 +49,7 @@ The app runs independently from WordPress. WordPress does not store business led
 
 ## Verification
 
-- GitHub's deployment passed script checks, all nine unit tests, artifact upload and publication.
+- GitHub's deployment passed script checks, all 20 unit tests, artifact upload and publication.
 - The public app loaded over HTTPS at the project path, with its logo, styles and scripts working and an empty XAF ledger.
 - The public homepage displayed all four project cards and the BizTrack link pointing to the published app.
 - Version 1.1 local app testing passed 67 browser checks across five viewport widths, including persistent day/night appearance and clearer phone transaction details.
