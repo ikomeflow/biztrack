@@ -1,8 +1,8 @@
 const BASE=new URL('./',self.location.href);
 const PREFIX='biztrack:'+BASE.pathname+':';
-const CACHE=PREFIX+'v4-20261017-minimal-pin';
+const CACHE=PREFIX+'v5-20261017-pin-spacing';
 const INDEX=new URL('index.html',BASE).href;
-const SHELL=['index.html','app-v5.mjs','styles-v5.css','report-v2.mjs','icon.svg'].map(p=>new URL(p,BASE).href);
+const SHELL=['index.html','app-v5.mjs','styles-v6.css','report-v2.mjs','icon.svg'].map(p=>new URL(p,BASE).href);
 // A candidate becomes available only when its entire matching app is saved.
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).catch(async error=>{await caches.delete(CACHE);throw error;})));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
