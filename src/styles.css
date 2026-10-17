@@ -85,3 +85,6 @@ footer{flex-wrap:wrap;column-gap:12px}footer .demo-banner{flex:0 0 100%;width:10
 
 /* Minimal PIN screen; optional tools stay available in a native disclosure. */
 .gate-card{max-width:390px}.gate-top{margin-bottom:26px}.gate-card h1{font-size:25px}#gate-form{margin-top:22px}.gate-options{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}.gate-options summary{width:fit-content;cursor:pointer;color:var(--muted);font-size:12px;padding:6px 0}.gate-options summary:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.gate-options .gate-links{margin-top:12px;gap:12px 20px}
+
+/* Keep the PIN field and action aligned with room for the focus ring. */
+#gate-form .pin-input{display:block;width:100%}#gate-submit{display:flex;margin-top:18px}
