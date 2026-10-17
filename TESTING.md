@@ -1,3 +1,13 @@
+# Version 1.4.2 minimal PIN screen — 17 October 2026
+
+- Build, standalone build and syntax checks pass. All 26 unit checks pass, including encryption, recovery, record preservation and coherent offline caching.
+- All 35 security browser checks pass with isolated synthetic records: migration, PIN changes, correct/incorrect recovery keys, locked backup restore, cross-tab locks, idle locking, storage failure and corrupt-data preservation. No production records or credentials were read or used.
+- Setup and unlock screenshots inspected. The PIN gate has no appearance control or repeated normal-state instructions. Forgot PIN remains visible for a locked ledger. Backup and demo tools remain accessible through the native More options disclosure; damaged original data opens the disclosure automatically. Gate widths from 320 to 1440 px pass.
+- The wider business browser suite was interrupted by the local browser connection. Its complete result is not claimed for this release. No calculation, storage, encryption or export module changed.
+- Publish matching app-v5.mjs, styles-v5.css, index.html and cache v4-20261017-minimal-pin together with the updated build/source files. Earlier assets remain available for existing pages.
+
+---
+
 # Version 1.4.1 compact controls — 17 October 2026
 
 - 26 unit tests, 67 business/mobile browser checks and the portable PIN/save/reload/unlock check pass. Day/night persistence, cross-tab appearance, demo exit, backups, reports and widths from 320 to 1440 px remain covered.
