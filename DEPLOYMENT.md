@@ -9,13 +9,19 @@ Published on 17 October 2026.
 
 ## GitHub Pages
 
-The public repository uses `main`, with GitHub Actions as the Pages source. The workflow checks application syntax, runs all nine unit tests and publishes only `dist/`. No credentials, user records, test exports or browser backups are committed. GitHub enforces HTTPS for the default Pages address.
+The public repository uses `main`, with GitHub Actions as the Pages source. The workflow checks application syntax, runs all unit tests and publishes only `dist/`. No credentials, user records, test exports or browser backups are committed. GitHub enforces HTTPS for the default Pages address.
 
 Commit changes to `main` to test and publish updates automatically. Browser data is scoped to the app's address and browser profile. A future move to a custom domain requires JSON backup and restore to transfer records; it does not move browser data automatically.
 
 ## Version 1.1 appearance update
 
 The header includes a Day / Night switch with a 44px touch target. Appearance follows the device initially, then remembers an explicit choice under `biztrack.theme.v1` and synchronizes it between tabs. `theme.js` applies the palette before the first paint. The business ledger key and backup format remain unchanged. The mobile layout now uses larger form inputs, clearer text and visible transaction categories. Printed/downloaded PDF reports keep their white paper layout.
+
+## Version 1.2 PIN and recovery update
+
+The first opening asks the user to choose and confirm a four-digit PIN. Existing plaintext records stay unchanged until encrypted setup commits successfully under the same `biztrack.ledger.v1` key. No default PIN is chosen. FlowTrack storage is independent. Subsequent loads require the PIN. Settings provides PIN changes, optional recovery key activation and locked-copy backups. Manual locking and 30-minute idle locking clear the business screens and drafts; ledger changes and manual locks also lock other tabs. Readable exports remain readable, so users should keep them private. Corrupt or inaccessible storage is preserved and blocked from normal writes. Restore downloads a safety copy before replacing existing saved data.
+
+Local validation: 20 unit tests, 67 app checks, 35 PIN/recovery browser checks, and a portable HTML PIN/save/reload/unlock round trip. Browser tests use disposable profiles and synthetic records only. The production page is checked at its setup gate without creating a PIN or changing the user's ledger.
 
 ## Website Work section
 

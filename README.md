@@ -20,6 +20,9 @@ The real ledger starts empty. **Explore a demo** opens disposable sample data wi
 
 ## Features
 
+- Four-digit PIN with encrypted browser storage, manual locking and a 30-minute idle lock. Existing records are migrated only after PIN setup saves successfully. Reloading always locks the app.
+- Optional recovery key in Settings. Save and acknowledge it before activation; a matching key resets a forgotten PIN without losing records. Changing the PIN keeps the existing recovery key. Replacing a recovery key retires the old key for the current ledger; older locked copies retain their original key.
+- Encrypted locked-copy backups, available even while locked. Restore requires that copy's matching PIN or recovery key. Backup replacement first downloads a safety copy of the current saved data.
 - One-tap **Day / Night** switch in the header. Follows the device appearance initially, remembers your choice and synchronizes between tabs. The preference uses its own `biztrack.theme.v1` key; financial records are unchanged.
 - Clearer secondary text, larger phone inputs and transaction categories visible in phone lists.
 - Record sales and expenses; edit entries or delete with a 15-second Undo.
@@ -37,7 +40,11 @@ The real ledger starts empty. **Explore a demo** opens disposable sample data wi
 
 Records are stored in `localStorage` under `biztrack.ledger.v1`, separate from FlowTrack. Data belongs to the current browser profile and site address. Changing browser, domain, protocol or port gives you a separate workspace; move records using JSON backup and restore.
 
-Download backups regularly. Clearing site data, using private browsing or losing a device can remove local records. There is no automatic server backup, authentication, encryption, cross-device synchronization or automatic currency conversion. Use a trusted browser/device. CSV and PDF reports cannot be restored; keep the JSON backup for that purpose.
+Download backups regularly. Clearing site data, using private browsing or losing a device can remove local records. There is no automatic server backup, account, cross-device synchronization or automatic currency conversion. CSV and PDF reports cannot be restored; keep JSON backups or encrypted locked copies for that purpose.
+
+The PIN/recovery implementation is adapted from FlowTrack under its MIT license. BizTrack uses independent keys, cryptographic labels, records and PIN settings. It encrypts records with AES-GCM and a random 256-bit data key, wrapped using a PIN key derived with PBKDF2-SHA-256 (600,000 iterations). Recovery uses an independent random 256-bit key. PINs and recovery secrets are not stored as readable browser data. Keys remain only in the current page session; locking clears the business UI and drafts. A four-digit PIN has limited entropy and is not protection against a determined offline attacker with a copy of the encrypted data. Use a trusted, secured device.
+
+Set up recovery under **Settings → PIN & recovery → Set up recovery**, save the key separately, and tick the saved-key confirmation. There is no universal PIN or support override. Without the correct PIN or a previously activated recovery key, the locked records cannot be recovered. Save a locked copy while you look for the correct credentials. JSON backups and CSV/PDF exports are readable files even when the browser ledger is protected; keep exported files private. PIN protection cannot be switched off in the app.
 
 Profit is recorded sales minus recorded expenses. BizTrack is a simple cash tracker: it does not model inventory, invoices, receivables, taxes or depreciation.
 
@@ -64,7 +71,7 @@ The main repository uses GitHub Actions to check the scripts, run the unit tests
 npm test
 ```
 
-Nine unit tests cover exact amounts, currency isolation, backup validation, CSV safety, dates, aggregate overflow, demo data and PDF cross-reference offsets.
+Twenty unit tests cover calculations, backup validation, CSV/PDF structure, PIN migration, encryption, recovery, incorrect credentials, failed writes, tampering, lock cancellation and concurrent-tab safety.
 
 Optional browser tests require Playwright and an installed Chromium-compatible browser:
 
@@ -74,8 +81,12 @@ npx playwright install chromium
 npm start
 # In another terminal:
 node tests/browser.mjs
+node tests/security-browser.mjs
+# Regenerate the portable file before this optional bundle check:
+node build-standalone.mjs
+node tests/portable-browser.mjs
 ```
 
 `BIZTRACK_QA_URL`, `BIZTRACK_QA_BROWSER`, `BIZTRACK_QA_PACKAGES` and `BIZTRACK_QA_OUTPUT` can override the server, browser executable, package directory and output directory. Browser tests use an isolated profile and never read your real browser ledger.
 
-Version 1.1 passed 67 browser checks, including appearance preferences, device changes, cross-tab synchronization, night surfaces across all four screens, touch targets and mobile form text. PDFs keep a white paper layout in either appearance.
+Version 1.2 passed the 67 app checks plus 35 PIN/recovery browser checks and a portable-bundle round trip, using isolated test profiles and synthetic records. PDFs keep a white paper layout in either appearance.

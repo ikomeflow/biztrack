@@ -2,7 +2,8 @@
 
 ## Passed
 
-- **9 unit tests** covering exact decimal arithmetic, XAF whole amounts, separate currencies, strict backup validation, CSV escaping, calendar dates, safe totals, demo isolation and byte-correct PDF structure.
+- **20 unit tests** covering calculations, backup/report structure, four-digit PIN validation, staged encryption migration, wrong credentials, tampering, quota failures, recovery creation/cancellation/reset/replacement, locked-copy restore, lock cancellation and stale-tab write rejection.
+- **35 PIN/recovery browser checks** using synthetic existing XAF/USD records. Migration preserves every record and preference; failed setup keeps original bytes. PIN changes and recovery resets retain records, and recovery activation requires saved-key acknowledgement. Reload/manual/30-minute idle locking, DOM/draft clearing, other-tab locking, locked backup download/restore, demo isolation before and after PIN setup, corrupt data preservation and phone gate widths all pass.
 - **67 browser checks** in isolated Microsoft Edge profiles: fresh ledger, add/edit/delete/undo, reload persistence, default currency, separate XAF/USD totals, combined search/type filters, downloaded CSV contents, full JSON backup, restore preview/cancel/confirm, invalid backup rejection, demo entry/exit, PDF download, invalid report periods and isolation from FlowTrack browser storage.
 - Day/night mode follows the device until the user makes a choice, remembers that choice after reload, synchronizes across tabs and leaves the ledger unchanged. All four screens and the entry form use the night palette. Phone transaction lists expose categories, the theme control is at least 44px high, and phone form inputs use 16px text.
 - All four screens checked for horizontal overflow at **320, 390, 700, 768 and 1440 pixels**.
@@ -10,13 +11,13 @@
 - No JavaScript errors were reported by the browser tests.
 - Downloaded PDF independently opened with a PDF parser: valid one-page A4 document with an embedded report image. The rendered page was visually inspected.
 - Mobile and desktop screenshots visually inspected.
-- Standalone HTML contains no imported scripts or remote dependencies, and its assembled JavaScript passes syntax checking.
+- Portable HTML bundle was tested through an isolated HTTP fixture: create a PIN, save a sale, reload locked, unlock and verify the exact amount. Module scopes are preserved in the bundled code.
 
 ## Verification limits
 
-- The built-in browser allows HTTP/HTTPS addresses and blocked direct `file:` navigation. Interactive browser testing used the web-served modular app. The standalone file shares the tested logic but was not opened interactively in that browser.
+- Direct `file:` browser storage varies by browser; the portable bundle was tested over HTTP, not from a file URL. Use the hosted HTTPS app for daily use.
 - Mobile layouts were checked in desktop browser viewports; physical iOS and Android devices were not tested.
-- The repository and GitHub Pages app were published on 17 October 2026. The hosted workflow passed script checks, all nine unit tests and publication. The public HTTPS app and homepage Work card were checked. See `DEPLOYMENT.md` for addresses and integration details.
+- The live version is verified separately after the hosted deployment passes. The user's production ledger and PIN are never used for automated tests. See `DEPLOYMENT.md` for addresses and integration details.
 - PDF reports embed rendered page images. Text is visually readable but not selectable; CSV preserves full transaction text.
 
 Source and storage remain separate from FlowTrack. No FlowTrack files were modified.
