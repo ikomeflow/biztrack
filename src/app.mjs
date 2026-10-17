@@ -81,13 +81,13 @@ function showWorkspace(){ $('#security-gate').hidden=true;$('#app-shell').hidden
 function showGate(){
  unlocked=false;$('#app-shell').hidden=true;$('#app-shell').inert=true;$('#security-gate').hidden=false;
  const enabled=vault.enabled;$('#gate-title').textContent=storageBlocked?'Records preserved':enabled?'Welcome back':'Set your PIN';
- $('#gate-description').textContent=storageBlocked?'Save the original file before restoring a valid backup.':enabled?'Enter your 4-digit PIN.':'Protect your records with 4 digits.';
+ $('#gate-description').hidden=!storageBlocked;$('#gate-description').textContent=storageBlocked?'Save the original file before restoring a valid backup.':'';$('#gate-options').open=storageBlocked;
  $('#gate-form').hidden=storageBlocked;$('#gate-confirm-wrap').hidden=enabled;$('#gate-confirm').required=!enabled;
- $('#gate-pin').previousElementSibling.textContent=enabled?'Your 4-digit PIN':'Choose a 4-digit PIN';$('#gate-pin').autocomplete=enabled?'current-password':'new-password';
- $('#gate-submit').textContent=enabled?'Unlock BizTrack':'Create PIN';$('#gate-form').reset();$('#gate-error').textContent='';
+ $('#gate-pin').previousElementSibling.textContent='4-digit PIN';$('#gate-pin').autocomplete=enabled?'current-password':'new-password';
+ $('#gate-submit').textContent=enabled?'Unlock':'Create PIN';$('#gate-form').reset();$('#gate-error').textContent='';
  $('#gate-existing').hidden=enabled||!real.entries.length;$('#gate-existing').textContent='Your existing records will be kept.';
  $('#gate-backup').hidden=!vault.raw&&!real.entries.length;$('#gate-backup').textContent=enabled?'Save locked copy':storageBlocked?'Save original data':'Save existing records';
- $('#forgot-pin').hidden=!enabled;$('#gate-recovery-hint').hidden=!enabled;$('#gate-recovery-hint').textContent=vault.hasRecovery?'Use your saved recovery key if needed.':'No recovery key saved. Your PIN is needed.';
+ $('#forgot-pin').hidden=!enabled;$('#gate-recovery-hint').hidden=true;$('#gate-recovery-hint').textContent=vault.hasRecovery?'Use your saved recovery key if needed.':'No recovery key saved. Your PIN is needed.';
  $('#gate-submit').disabled= !globalThis.crypto?.subtle;
  if(!globalThis.crypto?.subtle){$('#gate-error').textContent='Secure PIN storage needs HTTPS and a supported browser.';}
  if(!document.hidden&&!storageBlocked)$('#gate-pin').focus();
@@ -109,9 +109,6 @@ function lockApp(broadcast=true){
 }
 function openLedger(value){real=ledger=value;unlocked=true;demo=false;currency=value.defaultCurrency;$('#report-currency').value=currency;showWorkspace();route();$('#main').focus({preventScroll:true});}
 $('#lock-now').addEventListener('click',()=>lockApp());
-$('#gate-theme').addEventListener('click',()=>$('#theme-toggle').click());
-function syncGateTheme(){const dark=document.documentElement.dataset.theme==='dark';$('#gate-theme').innerHTML=icon(dark?'sun':'moon');$('#gate-theme').title=`Switch to ${dark?'day':'night'} mode`;$('#gate-theme').setAttribute('aria-label',`Switch to ${dark?'day':'night'} mode`);$('#gate-theme').setAttribute('aria-pressed',String(dark));}
-document.addEventListener('biztrack-themechange',syncGateTheme);syncGateTheme();
 $('#gate-form').addEventListener('submit',async e=>{
  e.preventDefault();const button=$('#gate-submit');if(button.disabled||saving)return;const ticket=operation;button.disabled=true;saving=true;$('#gate-error').textContent='';
  try{const pin=$('#gate-pin').value;if(!/^\d{4}$/.test(pin))throw Error('Use exactly 4 digits.');let value;
