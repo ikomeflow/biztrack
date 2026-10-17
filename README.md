@@ -4,7 +4,11 @@ A mobile-first business sales, expense and profit tracker by Ikomeflow.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
-## Compact controls — 1.4.1
+## Minimal PIN screen — 1.4.2
+
+The PIN screen shows only the brand, PIN form, Unlock action and Forgot PIN link. Backup and demo tools remain available under More options. Repeated instructions and the appearance toggle are removed from this screen; the saved/device appearance and the toggle inside the workspace remain available. Warnings about preserved original records are shown when relevant. The encrypted ledger format, storage keys, PIN and recovery behavior are unchanged. Matching app-v5.mjs, styles-v5.css and a new offline cache keep the release coherent.
+
+## Compact controls — 1.4.1 (previous release)
 
 Day/night controls now use a small sun/moon icon, including on the PIN gate. The visible circle is 32 px with a 44 px touch area, keyboard focus, descriptive labels and saved appearance preferences. Demo status and Exit demo appear together in the footer on all four screens. Sample records remain separate from personal records.
 
