@@ -1,4 +1,4 @@
-import {money,totals} from './core.mjs';
+import {money,totals} from './core.mjs?v=1.2.1';
 // Render report pages at 2× A4 resolution, then embed each as a JPEG in a PDF.
 // This preserves the browser's Unicode text rendering without remote fonts/libraries.
 export async function makePDF(entries,{businessName,currency,from,to},isCancelled=()=>false){
@@ -9,7 +9,7 @@ export async function makePDF(entries,{businessName,currency,from,to},isCancelle
   const text=(s,x,y,size=10,color='#162b4d',bold=false,align='left')=>{ctx.fillStyle=color;ctx.font=`${bold?'600':'400'} ${size}px "Segoe UI", Arial, sans-serif`;ctx.textAlign=align;ctx.fillText(String(s),x,y);};
   const fit=(s,max,size=9)=>{ctx.font=`${size}px "Segoe UI", Arial, sans-serif`;let value=String(s);while(ctx.measureText(value).width>max&&value.length>1)value=value.slice(0,-1);return value!==String(s)?value.slice(0,-1)+'…':value;};
   ctx.fillStyle='#1557e8';ctx.fillRect(38,38,33,33);ctx.strokeStyle='white';ctx.lineWidth=2.2;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(47,61);ctx.lineTo(47,47);ctx.lineTo(54,47);ctx.bezierCurveTo(60,47,60,54,54,54);ctx.lineTo(47,54);ctx.moveTo(54,54);ctx.bezierCurveTo(60,54,60,61,54,61);ctx.lineTo(47,61);ctx.moveTo(54,47);ctx.lineTo(65,47);ctx.moveTo(62,47);ctx.lineTo(62,61);ctx.stroke();
-  text('BizTrack.',81,58,19,'#162b4d',true);text('FUTURA GROUP',557,58,8,'#8393ac',false,'right');text('Business report',38,110,25,'#162b4d',true);text(fit(businessName,350,12),38,136,12);text(`${from}  to  ${to}   ·   ${currency}`,38,155,10,'#718098');
+  text('BizTrack.',81,58,19,'#162b4d',true);text('BY IKOMEFLOW',557,58,8,'#8393ac',false,'right');text('Business report',38,110,25,'#162b4d',true);text(fit(businessName,350,12),38,136,12);text(`${from}  to  ${to}   ·   ${currency}`,38,155,10,'#718098');
   ctx.fillStyle='#f0f4fc';ctx.fillRect(38,176,519,70);text('TOTAL SALES',51,197,8,'#718098');text(money(t.sales,currency),51,223,14,'#162b4d',true);text('TOTAL EXPENSES',225,197,8,'#718098');text(money(t.expenses,currency),225,223,14,'#162b4d',true);text('NET PROFIT',400,197,8,'#1557e8');text(money(t.profit,currency),400,223,14,'#1557e8',true);
   text(`${entries.length} transactions · Recorded sales minus recorded expenses`,38,270,8,'#718098');ctx.fillStyle='#f6f8fc';ctx.fillRect(38,286,519,26);text('DATE / TYPE',47,303,8,'#718098',true);text('DESCRIPTION / CATEGORY',143,303,8,'#718098',true);text('AMOUNT',547,303,8,'#718098',true,'right');
   rows.slice(p*perPage,(p+1)*perPage).forEach((e,i)=>{const y=331+i*18;text(`${e.date}  ${e.type==='sale'?'Sale':'Expense'}`,47,y,8);text(fit(`${e.description} · ${e.category}`,265,8),143,y,8);text(`${e.type==='sale'?'+':'−'}${money(e.amount,currency)}`,547,y,8,e.type==='sale'?'#148574':'#526580',false,'right');ctx.strokeStyle='#edf1f7';ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(38,y+7);ctx.lineTo(557,y+7);ctx.stroke();});

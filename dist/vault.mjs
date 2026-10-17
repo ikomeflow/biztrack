@@ -1,5 +1,5 @@
 // Adapted from FlowTrack (MIT); see LICENSE.
-import {STORAGE_KEY,validateLedger,CURRENCIES,totals} from './core.mjs';
+import {STORAGE_KEY,validateLedger,CURRENCIES,totals} from './core.mjs?v=1.2.1';
 function validateState(value){const valid=validateLedger(value);for(const code of Object.keys(CURRENCIES))totals(valid.entries.filter(e=>e.currency===code));return valid;}
 const ITERATIONS=600000;
 const enc=new TextEncoder(),dec=new TextDecoder();
