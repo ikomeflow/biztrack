@@ -13,6 +13,10 @@ The public repository uses `main`, with GitHub Actions as the Pages source. The 
 
 Commit changes to `main` to test and publish updates automatically. Browser data is scoped to the app's address and browser profile. A future move to a custom domain requires JSON backup and restore to transfer records; it does not move browser data automatically.
 
+## Version 1.1 appearance update
+
+The header includes a Day / Night switch with a 44px touch target. Appearance follows the device initially, then remembers an explicit choice under `biztrack.theme.v1` and synchronizes it between tabs. `theme.js` applies the palette before the first paint. The business ledger key and backup format remain unchanged. The mobile layout now uses larger form inputs, clearer text and visible transaction categories. Printed/downloaded PDF reports keep their white paper layout.
+
 ## Website Work section
 
 The WordPress homepage is page 5. Its existing Custom HTML content now includes a fourth project card, between FlowTrack and the ebook. Desktop uses four columns, medium screens use two columns, and phones keep the existing stacked layout.
@@ -36,4 +40,4 @@ The app runs independently from WordPress. WordPress does not store business led
 - GitHub's deployment passed script checks, all nine unit tests, artifact upload and publication.
 - The public app loaded over HTTPS at the project path, with its logo, styles and scripts working and an empty XAF ledger.
 - The public homepage displayed all four project cards and the BizTrack link pointing to the published app.
-- Local app testing previously passed 49 browser checks across five viewport widths.
+- Version 1.1 local app testing passed 67 browser checks across five viewport widths, including persistent day/night appearance and clearer phone transaction details.

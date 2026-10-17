@@ -3,7 +3,8 @@
 ## Passed
 
 - **9 unit tests** covering exact decimal arithmetic, XAF whole amounts, separate currencies, strict backup validation, CSV escaping, calendar dates, safe totals, demo isolation and byte-correct PDF structure.
-- **49 browser checks** in an isolated Microsoft Edge profile: fresh ledger, add/edit/delete/undo, reload persistence, default currency, separate XAF/USD totals, combined search/type filters, downloaded CSV contents, full JSON backup, restore preview/cancel/confirm, invalid backup rejection, demo entry/exit, PDF download, invalid report periods and isolation from FlowTrack browser storage.
+- **67 browser checks** in isolated Microsoft Edge profiles: fresh ledger, add/edit/delete/undo, reload persistence, default currency, separate XAF/USD totals, combined search/type filters, downloaded CSV contents, full JSON backup, restore preview/cancel/confirm, invalid backup rejection, demo entry/exit, PDF download, invalid report periods and isolation from FlowTrack browser storage.
+- Day/night mode follows the device until the user makes a choice, remembers that choice after reload, synchronizes across tabs and leaves the ledger unchanged. All four screens and the entry form use the night palette. Phone transaction lists expose categories, the theme control is at least 44px high, and phone form inputs use 16px text.
 - All four screens checked for horizontal overflow at **320, 390, 700, 768 and 1440 pixels**.
 - Mobile entry form focuses the amount and successfully saves an entry. Demo edits remain separate after reload.
 - No JavaScript errors were reported by the browser tests.

@@ -20,6 +20,8 @@ The real ledger starts empty. **Explore a demo** opens disposable sample data wi
 
 ## Features
 
+- One-tap **Day / Night** switch in the header. Follows the device appearance initially, remembers your choice and synchronizes between tabs. The preference uses its own `biztrack.theme.v1` key; financial records are unchanged.
+- Clearer secondary text, larger phone inputs and transaction categories visible in phone lists.
 - Record sales and expenses; edit entries or delete with a 15-second Undo.
 - View sales, expenses, net profit, profit margin, activity and expense categories.
 - Filter by today, a selected month, or all time; search transactions by description or category.
@@ -75,3 +77,5 @@ node tests/browser.mjs
 ```
 
 `BIZTRACK_QA_URL`, `BIZTRACK_QA_BROWSER`, `BIZTRACK_QA_PACKAGES` and `BIZTRACK_QA_OUTPUT` can override the server, browser executable, package directory and output directory. Browser tests use an isolated profile and never read your real browser ledger.
+
+Version 1.1 passed 67 browser checks, including appearance preferences, device changes, cross-tab synchronization, night surfaces across all four screens, touch targets and mobile form text. PDFs keep a white paper layout in either appearance.
