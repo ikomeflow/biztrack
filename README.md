@@ -4,6 +4,14 @@ A mobile-first business sales, expense and profit tracker by Ikomeflow.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
+## Reliable startup — 1.5.0
+
+The PIN screen uses small inline styles and opens before the full workspace stylesheet finishes. Interrupted app downloads expose Retry; offline/update status is visible while locked. The app saves a complete matching offline version before offering Update app. Authenticated workspace content waits for its styles.
+
+For an older copy stuck before the PIN, open https://biztrack.ikomeflow.com/open.html in the same browser and apply Update app if offered. This same-origin address keeps access to existing records; do not clear site data. Wait for Ready offline before relying on offline reopening. A first visit still needs a successful internet download.
+
+Release assets are app-v6.mjs and styles-v7.css with cache v6-20261017-reliable-start. Existing asset versions remain available. Ledger format, PIN encryption, recovery and currency rules are unchanged. Controlled 400 ms latency / 50 KB/s / 4× CPU testing reached the PIN at 1987 ms before and 1634 ms after, about 18% faster in that run.
+
 ## PIN button spacing — 1.4.3
 
 The PIN input and primary action keep matching left/right edges, with an explicit 18 px gap so the focus ring does not touch the button. This also applies to first-time PIN setup. Application and security logic remain unchanged.

@@ -1,3 +1,15 @@
+# Version 1.5.0 reliable startup — 17 October 2026
+
+- Build, portable build and syntax checks passed. **26 unit tests and 172 browser checks passed**: 67 general, 35 security, 22 simple UI, 1 portable app, 23 performance/upgrade and 24 new startup/retry checks. Synthetic records and isolated browser contexts only; no production ledger or credential was used.
+- The PIN gate remains usable with the full workspace stylesheet deliberately stalled. Authenticated content waits for styling and resumes when it arrives. Main-module errors expose Retry; an eight-second stall exposes a slow-connection message and Retry, then resumes automatically when the download arrives. Failed style/offline downloads can be retried before unlock.
+- The minimal gate keeps its 18 px field-to-Unlock gap and has no appearance toggle. Light/dark layouts at widths 320, 390, 768 and 1440 have no horizontal overflow. Screenshots inspected.
+- Exact previous 1.4.3 shell and worker fixtures verify that open.html bypasses the old cached root. Update preserves ciphertext byte-for-byte, guards partial PIN input and open forms, and returns to the canonical root. The new entry also opens offline after cache activation. Failed candidate downloads retain the working previous app.
+- Controlled gzip comparison at 400 ms latency, 50 KB/s download and 4× CPU slowdown: previous PIN gate 1987 ms, new gate 1634 ms (about 18% faster); new cached stalled-connection reload 586 ms. Timings describe this run and are not guarantees for every connection.
+- All 250 synthetic entries survive the update with exact totals, complete CSV and offline multi-page PDF output. Existing recovery works offline; FlowTrack storage is untouched. Portable HTML still creates a PIN, saves encrypted records and unlocks after reload. Physical Safari/iOS and native screen-reader behavior were not tested.
+- New suite: `node tests/startup-browser.mjs`. Existing browser suites use BIZTRACK_QA_URL, BIZTRACK_QA_PACKAGES, BIZTRACK_QA_BROWSER and BIZTRACK_QA_OUTPUT overrides as documented in their sources.
+
+---
+
 # Version 1.4.3 PIN spacing — 17 October 2026
 
 - The deployed PIN input and button shared the same edges but had a zero-pixel vertical gap. The CSS now makes both block-level controls and gives the primary action an explicit 18 px top margin.
