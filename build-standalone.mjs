@@ -7,5 +7,6 @@ const bundled=await build({absWorkingDir:fileURLToPath(new URL('.',import.meta.u
 const js=bundled.outputFiles[0].text,hash=createHash('sha256').update(js).digest('base64');
 const css=await readFile('dist/styles-v7.css','utf8'),svg=await readFile('dist/icon.svg','utf8');
 let html=await readFile('dist/index.html','utf8');
+html=html.replace('<link rel="manifest" href="./manifest.webmanifest">','').replace('<link rel="apple-touch-icon" href="./icon-192.png">','');
 html=html.replace("script-src 'self'",`script-src 'self' 'sha256-${hash}'`).replace('<html lang="en">','<html lang="en" data-workspace-styles="ready">').replace('</head>',()=>`<style>${css}</style></head>`).replace('<script type="module" id="app-entry" src="./app-v6.mjs"></script>','').replace(/<script id="startup-bootstrap">[\s\S]*?<\/script>/,'').replaceAll('./icon.svg','data:image/svg+xml,'+encodeURIComponent(svg)).replace('</body>',()=>`<script type="module">${js}</script></body>`);
 await writeFile('../BizTrack.html',html);console.log('Standalone app: ../BizTrack.html');
