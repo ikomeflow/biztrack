@@ -10,7 +10,7 @@ The PIN screen uses small inline styles and opens before the full workspace styl
 
 For an older copy stuck before the PIN, open https://biztrack.ikomeflow.com/open.html in the same browser and apply Update app if offered. This same-origin address keeps access to existing records; do not clear site data. Wait for Ready offline before relying on offline reopening. A first visit still needs a successful internet download.
 
-Release assets are app-v6.mjs and styles-v7.css with cache v6-20261017-reliable-start. Existing asset versions remain available. Ledger format, PIN encryption, recovery and currency rules are unchanged. Controlled 400 ms latency / 50 KB/s / 4× CPU testing reached the PIN at 1987 ms before and 1634 ms after, about 18% faster in that run.
+Release assets are app-v7.mjs and styles-v8.css with cache v6-20261017-reliable-start. Existing asset versions remain available. Ledger format, PIN encryption, recovery and currency rules are unchanged. Controlled 400 ms latency / 50 KB/s / 4× CPU testing reached the PIN at 1987 ms before and 1634 ms after, about 18% faster in that run.
 
 ## PIN button spacing — 1.4.3
 
@@ -134,3 +134,7 @@ Version 1.2 passed the 67 app checks plus 35 PIN/recovery browser checks and a p
 ## Install BizTrack
 
 Choose **Install app** on the PIN screen or in Settings. Chrome and Edge can offer a native install prompt when eligible. On iPhone/iPad, use Safari → Share → Add to Home Screen. On Mac Safari, use File → Add to Dock. Installed mode hides the PIN-screen install link. Installation does not sync or back up records; open online once and wait for Ready offline, and keep JSON backups.
+
+## Slow connections
+
+The app works on slow links and keeps a complete offline copy after “Ready offline”. The first download prioritizes the visible screen before installation icons and optional tools. Icons are losslessly compressed. Saved reopening does not wait for a network connection. A first-ever visit still needs internet; keep the page open until offline preparation finishes. No features or data protection have been removed.
