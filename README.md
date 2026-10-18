@@ -130,3 +130,7 @@ node tests/portable-browser.mjs
 `BIZTRACK_QA_URL`, `BIZTRACK_QA_BROWSER`, `BIZTRACK_QA_PACKAGES` and `BIZTRACK_QA_OUTPUT` can override the server, browser executable, package directory and output directory. Browser tests use an isolated profile and never read your real browser ledger.
 
 Version 1.2 passed the 67 app checks plus 35 PIN/recovery browser checks and a portable-bundle round trip, using isolated test profiles and synthetic records. PDFs keep a white paper layout in either appearance.
+
+## Install BizTrack
+
+Choose **Install app** on the PIN screen or in Settings. Chrome and Edge can offer a native install prompt when eligible. On iPhone/iPad, use Safari → Share → Add to Home Screen. On Mac Safari, use File → Add to Dock. Installed mode hides the PIN-screen install link. Installation does not sync or back up records; open online once and wait for Ready offline, and keep JSON backups.

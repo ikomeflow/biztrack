@@ -1,3 +1,5 @@
+import {initInstall} from './install.mjs';
+initInstall({name:'BizTrack',onlineURL:'https://biztrack.ikomeflow.com/'});
 import {LedgerVault,isVault,validateVault} from '../dist/vault.mjs?v=1.2.1';
 import {STORAGE_KEY,CURRENCIES,CATEGORIES,today,emptyLedger,money,validDate,toMinor,validateLedger,selectEntries,totals,escapeHTML as esc,csv,periodRange,demoLedger} from '../dist/core.mjs?v=1.2.1';
 const makePDF=(...args)=>import('./report-v2.mjs').then(module=>module.makePDF(...args));
