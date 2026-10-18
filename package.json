@@ -1,8 +1,8 @@
 {
   "name": "biztrack",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
-  "description": "Simple local business tracker by Ikomeflow",
+  "description": "Simple local business tracker by Futura Group",
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
@@ -15,5 +15,6 @@
   },
   "devDependencies": {
     "esbuild": "0.28.2"
-  }
+  },
+  "author": "Futura Group"
 }
