@@ -1,6 +1,6 @@
 const BASE=new URL('./',self.location.href);
 const PREFIX='biztrack:'+BASE.pathname+':';
-const CACHE=PREFIX+'v7-20261017-ikomeflow';
+const CACHE=PREFIX+'v8-20261018-futura';
 const INDEX=new URL('index.html',BASE).href;
 const OPEN=new URL('open.html',BASE).href;
 const SHELL=['index.html','app-v6.mjs','styles-v7.css','report-v2.mjs','icon.svg'].map(p=>new URL(p,BASE).href);

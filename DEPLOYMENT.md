@@ -27,7 +27,7 @@ Local validation: 20 unit tests, 67 app checks, 35 PIN/recovery browser checks, 
 
 The app uses **https://biztrack.ikomeflow.com/**, matching FlowTrack’s own subdomain. GitHub Pages has this custom domain configured. Cloudflare is authoritative for DNS: CNAME name `biztrack`, target `ikomeflow.github.io`, DNS only, TTL Auto. No existing website or FlowTrack records are changed. With Actions publishing, the custom domain is saved in repository Pages settings; a CNAME file is not required.
 
-The homepage BizTrack launch link and icon use the custom domain. The app credits Ikomeflow discreetly inside the workspace and in PDF reports; the PIN gate has no creator byline. This is a presentation-only change to the app: ledger keys, PINs and recovery settings remain unchanged. Browser records belong to their origin. A previous ledger on the GitHub Pages address must be moved with a saved JSON or locked-copy backup; the current in-app browser showed an empty, unconfigured workspace before the domain change.
+The homepage BizTrack launch link and icon use the custom domain. The app credits Futura Group discreetly inside the workspace and in PDF reports; the PIN gate has no creator byline. This is a presentation-only change to the app: ledger keys, PINs and recovery settings remain unchanged. Browser records belong to their origin. A previous ledger on the GitHub Pages address must be moved with a saved JSON or locked-copy backup; the current in-app browser showed an empty, unconfigured workspace before the domain change.
 
 ## Website Work section
 

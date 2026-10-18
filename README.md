@@ -1,6 +1,6 @@
 # BizTrack
 
-A mobile-first business sales, expense and profit tracker by Ikomeflow.
+A mobile-first business sales, expense and profit tracker by Futura Group.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
 
@@ -101,7 +101,7 @@ The main repository uses GitHub Actions to check the scripts, run the unit tests
 
 ## Branding
 
-The PIN setup and unlock screen show only the BizTrack name and BT monogram, without a creator byline. The main app and PDF reports use a small “By Ikomeflow” credit. Sample records use the neutral “Sample business” name. Existing business names are never renamed.
+The PIN setup and unlock screen show only the BizTrack name and BT monogram, without a creator byline. The main app and PDF reports use a small “By Futura Group” credit. Sample records use the neutral “Sample business” name. Existing business names are never renamed.
 
 `dist/icon.svg` is an original connected BT monogram. It uses the same blue (`#1557e8`), rounded square and connected white line treatment observed in the locally available FlowTrack FT reference. BizTrack is a separate app, source folder and storage key; the BT shape is distinct rather than an exact copy of FT.
 
