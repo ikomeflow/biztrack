@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#1557e8"><meta name="description" content="A clearer view of your business. Track sales, expenses and profit with BizTrack by Ikomeflow. No login required.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' __THEME_CSP__; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' __THEME_CSP__ __STARTUP_CSP__; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
   <title>BizTrack — Your business, in view.</title>
   <!-- BIZTRACK_THEME -->
-  <link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles-v6.css">
-  <script type="module" src="./app-v5.mjs"></script>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml"><!-- BIZTRACK_GATE_STYLES -->
+  <script type="module" id="app-entry" src="./app-v6.mjs"></script>
 </head>
 <body>
-<p id="startup" class="startup" role="status">Opening BizTrack…</p>
+<div id="startup" class="startup" role="status"><strong>BizTrack.</strong><p id="startup-message">Opening…</p><button id="startup-retry" class="button secondary" type="button" hidden>Retry</button></div>
 <div id="update-banner" class="update-banner" role="status" hidden><span>Update ready.</span><button id="update-app" class="button secondary">Update app</button></div>
 <section hidden id="security-gate" class="security-gate" aria-labelledby="gate-title"><div class="gate-card"><div class="gate-top"><a class="brand" href="#overview"><img src="./icon.svg" alt="" width="46" height="46"><span>BizTrack<span class="brand-dot">.</span></span></a></div><h1 id="gate-title">Set your PIN</h1><p id="gate-description" hidden></p><p id="gate-existing" class="gate-notice" hidden>Your existing records will be kept.</p><form id="gate-form"><label class="field-label" for="gate-pin">4-digit PIN</label><input id="gate-pin" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="new-password" required><div id="gate-confirm-wrap"><label class="field-label" for="gate-confirm">Confirm PIN</label><input id="gate-confirm" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]{4}" minlength="4" maxlength="4" autocomplete="new-password" required></div><p id="gate-error" class="form-error" role="alert"></p><button id="gate-submit" class="button primary" type="submit">Create PIN</button></form><button id="forgot-pin" class="text-button" hidden>Forgot PIN?</button><p id="gate-recovery-hint" class="help-text" hidden></p><details id="gate-options" class="gate-options"><summary>More options</summary><div class="gate-links"><button id="gate-backup" class="text-button" hidden>Save existing records</button><button id="gate-restore" class="text-button">Restore a backup</button><button id="gate-demo" class="text-button">Explore demo</button></div></details></div></section>
+<div id="gate-download" class="gate-download" role="status"><span id="gate-offline-status">Saving offline files…</span><button id="retry-offline" class="button secondary" type="button" hidden>Retry</button></div><div id="style-alert" class="style-alert" role="status" hidden><span>Style download interrupted.</span><button id="style-retry" class="button secondary" type="button">Retry</button></div>
 <a class="skip-link" href="#main">Skip to content</a>
 <div id="app-shell" hidden inert>
 <aside class="sidebar">
@@ -55,4 +56,5 @@
 <input id="restore-file" type="file" accept=".json,application/json" hidden>
 <div id="toast" class="toast" role="status" hidden><span id="toast-message"></span><button id="undo-delete" hidden>Undo</button></div>
 <noscript><div class="warning">Enable JavaScript to use BizTrack. Your data stays in your browser.</div></noscript>
+<!-- BIZTRACK_STARTUP -->
 </body></html>

@@ -77,8 +77,11 @@ function securityStatus(){
  $('#recovery-status').textContent=vault.hasRecovery?'Recovery ready. Keep your key safe.':'Not set up. Save a key for a forgotten PIN.';
  $('#setup-recovery').textContent=vault.hasRecovery?'Replace key':'Set up recovery';
 }
-function showWorkspace(){ $('#security-gate').hidden=true;$('#app-shell').hidden=false;$('#app-shell').inert=false;lastActivity=Date.now(); }
+let workspaceStyleWait=false;
+window.addEventListener('biztrack-styles-ready',()=>{if(workspaceStyleWait&&(unlocked||demo))showWorkspace();});
+function showWorkspace(){if(document.documentElement.dataset.workspaceStyles!=='ready'){workspaceStyleWait=true;$('#security-gate').hidden=true;$('#gate-download').hidden=true;$('#app-shell').hidden=true;$('#app-shell').inert=true;$('#startup').hidden=false;$('#startup-message').textContent='Opening workspace…';return;}workspaceStyleWait=false;$('#startup').hidden=true;$('#gate-download').hidden=true; $('#security-gate').hidden=true;$('#app-shell').hidden=false;$('#app-shell').inert=false;lastActivity=Date.now(); }
 function showGate(){
+ workspaceStyleWait=false;$('#startup').hidden=true;$('#gate-download').hidden=false;
  unlocked=false;$('#app-shell').hidden=true;$('#app-shell').inert=true;$('#security-gate').hidden=false;
  const enabled=vault.enabled;$('#gate-title').textContent=storageBlocked?'Records preserved':enabled?'Welcome back':'Set your PIN';
  $('#gate-description').hidden=!storageBlocked;$('#gate-description').textContent=storageBlocked?'Save the original file before restoring a valid backup.':'';$('#gate-options').open=storageBlocked;
@@ -150,14 +153,33 @@ document.addEventListener('visibilitychange',checkIdle);window.addEventListener(
 window.addEventListener('pagehide',()=>lockApp(false));window.addEventListener('pageshow',e=>{if(e.persisted){load();showGate();}});
 showGate();
 
-$('#startup').hidden=true;
+window.dispatchEvent(new Event('biztrack-ready'));
+
+// App-file caching never reads or writes the encrypted ledger.
+function offlineStatus(text,retry=false){$('#offline-status').textContent=text;$('#gate-offline-status').textContent=text;$('#retry-offline').hidden=!retry;}
+const watchedRegistrations=new WeakSet();
+async function retryOffline(){
+ $('#retry-offline').disabled=true;offlineStatus('Saving offline files…');
+ try{const reg=await navigator.serviceWorker.register('./sw.js');watchOffline(reg);await reg.update();}
+ catch{offlineStatus('Offline download interrupted.',true);}
+ finally{$('#retry-offline').disabled=false;}
+}
+function watchOffline(reg){
+ if(watchedRegistrations.has(reg))return;watchedRegistrations.add(reg);
+ const ready=()=>offlineStatus('Ready offline.');
+ function update(){if(reg.waiting&&navigator.serviceWorker.controller){$('#update-banner').hidden=false;offlineStatus('Update ready.');$('#update-app').onclick=()=>{
+  if($('#gate-pin').value||$('#gate-confirm').value){$('#gate-error').textContent='Finish or clear your PIN before updating.';return;}
+  if(saving||pendingRecovery||$('dialog[open]')||(view==='settings'&&unlocked&&($('#business-name').value!==ledger.businessName||$('#default-currency').value!==ledger.defaultCurrency))){toast('Save or close your form before updating.');return;}reg.waiting.postMessage('SKIP_WAITING');
+ };}}
+ function installing(){const worker=reg.installing;if(!worker)return;offlineStatus(reg.active?'Downloading update…':'Saving offline files…');worker.addEventListener('statechange',()=>{
+  if(worker.state==='redundant')offlineStatus(reg.active?'Update download interrupted.':'Offline download interrupted.',true);
+  else if(worker.state==='installed'){if(!reg.active)ready();update();}
+  else if(worker.state==='activated'){ready();update();}
+ });}
+ if(reg.active)ready();else offlineStatus('Saving offline files…');update();installing();reg.addEventListener('updatefound',installing);
+}
+$('#retry-offline').addEventListener('click',()=>void retryOffline());
 if(!__BIZTRACK_PORTABLE__&&'serviceWorker' in navigator&&window.isSecureContext){
- const status=$('#offline-status');
- navigator.serviceWorker.register('./sw.js').then(reg=>{
-  const ready=()=>{status.textContent='Ready offline.';};
-  if(navigator.serviceWorker.controller)ready();else navigator.serviceWorker.ready.then(ready);
-  function update(){if(reg.waiting&&navigator.serviceWorker.controller){$('#update-banner').hidden=false;$('#update-app').onclick=()=>{if(saving||pendingRecovery||$('dialog[open]')||$('#gate-pin').value||$('#gate-confirm').value||(view==='settings'&&unlocked&&($('#business-name').value!==ledger.businessName||$('#default-currency').value!==ledger.defaultCurrency))){toast('Save or close your form before updating.');return;}reg.waiting.postMessage('SKIP_WAITING');};}}
-  update();reg.addEventListener('updatefound',()=>reg.installing?.addEventListener('statechange',update));let refreshing=false;
-  navigator.serviceWorker.addEventListener('controllerchange',()=>{ready();if(!refreshing&&!$('#update-banner').hidden){refreshing=true;location.reload();}});
- }).catch(()=>{status.textContent='Offline setup failed. Reopen online to retry.';});
-}else $('#offline-status').textContent=__BIZTRACK_PORTABLE__?'Portable copy. Keep regular backups.':'Offline files need HTTPS or localhost. Keep regular backups.';
+ navigator.serviceWorker.register('./sw.js').then(watchOffline).catch(()=>offlineStatus('Offline download interrupted.',true));
+ let refreshing=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!refreshing&&!$('#update-banner').hidden){refreshing=true;if(location.pathname.endsWith('/open.html'))location.replace(new URL('./',location.href));else location.reload();}});
+}else offlineStatus(__BIZTRACK_PORTABLE__?'Portable copy. Keep regular backups.':'Offline files need HTTPS or localhost.');
