@@ -6,7 +6,7 @@ const options={absWorkingDir:fileURLToPath(new URL('.',import.meta.url)),bundle:
 await build({...options,entryPoints:['src/app.mjs'],outfile:'dist/app-v7.mjs',external:['./report-v2.mjs'],define:{__BIZTRACK_PORTABLE__:'false'}});
 await build({...options,entryPoints:['dist/report.mjs'],outfile:'dist/report-v2.mjs'});
 const css=await transform(await readFile('src/styles.css','utf8'),{loader:'css',minify:true,target:['es2022']});await writeFile('dist/styles-v8.css',css.code);
-const theme=await readFile('dist/theme.js','utf8'),hash=createHash('sha256').update(theme).digest('base64');
+const theme=(await readFile('dist/theme.js','utf8')).replace(/\r\n?/g,'\n'),hash=createHash('sha256').update(theme).digest('base64');
 const gate=await transform(await readFile('src/gate.css','utf8'),{loader:'css',minify:true,target:['es2022']});
 const startup=await transform(await readFile('src/startup.mjs','utf8'),{loader:'js',format:'iife',minify:true,target:['es2020']});
 const startupHash=createHash('sha256').update(startup.code).digest('base64');
