@@ -1,5 +1,10 @@
 # BizTrack
 
+## First-visit loading recovery
+
+The inline loading and Retry bootstrap starts immediately after the loading screen, before the remaining page arrives. Slow document downloads no longer delay the recovery timer. Main-module, dependency and initialization failures show Retry instead of leaving startup stuck. No financial records, PINs or recovery keys are read or changed by this bootstrap.
+
+
 A mobile-first business sales, expense and profit tracker by Futura Group.
 
 Live app: [biztrack.ikomeflow.com](https://biztrack.ikomeflow.com/) · [Ikomeflow Work](https://ikomeflow.com/#work) · [GitHub source](https://github.com/ikomeflow/biztrack)
