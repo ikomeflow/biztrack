@@ -91,3 +91,7 @@ footer{flex-wrap:wrap;column-gap:12px}footer .demo-banner{flex:0 0 100%;width:10
 
 /* Leave room for the compact offline indicator while locked. */
 .security-gate{padding-bottom:84px}
+
+/* History export controls stay usable on narrow screens. */
+.transaction-filters{flex-wrap:wrap}.transaction-filters .search-box{min-width:160px}.history-status{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 22px;flex-wrap:wrap}.history-status .help-text{margin:0}.history-status .text-button{min-height:44px}.history-summary{padding:0 22px 12px;margin:0;line-height:1.8;overflow-wrap:anywhere}.search-all-dates{margin:0 22px 18px;min-height:44px}.history-pdf-setting{padding:18px 0;border-top:1px solid var(--line)}.history-pdf-setting h3{font-size:13px}.history-pdf-setting p{font-size:12px;color:var(--muted);line-height:1.7}.history-pdf-setting select{width:100%;font-size:16px}.history-pdf-setting .button{margin-top:10px}.toast{max-width:calc(100vw - 32px);flex-wrap:wrap;gap:10px}.toast button{min-height:44px;white-space:nowrap}
+@media(max-width:700px){.transaction-filters .search-box{flex:1 0 100%}.transaction-filters>.button{flex:1;min-width:110px}.transaction-filters>select{flex:1 0 100%;width:100%}.history-status{padding:0 16px}.history-summary{padding:0 16px 12px}.history-pdf-setting .button{width:100%}}
