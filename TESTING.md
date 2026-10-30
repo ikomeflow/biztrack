@@ -1,3 +1,14 @@
+# Version 1.7.0 - full history PDF and clearer History
+
+- 38 unit tests pass, including same-day insertion order through edits and backup round-trips, 250-record complete exports, exact large amounts, batch Undo, backup reminders, PDF currency separation and cancellation, and matching offline asset versions.
+- Browser checks use only disposable demo records. Filtered History PDF includes the selected search/type and accurate totals. Settings full-history PDF downloads while the local server is stopped; cached reopening retains styles and the complete app.
+- A 125-record PDF with long descriptions was independently parsed: all 125 row markers and all descriptions are present across 16 pages. First and middle pages were rendered and inspected, including accented text, repeating headings and footers. PDF text is selectable.
+- History displays all dates initially, active filters/count/totals, and Reset filters. Two consecutive deletions and batch Undo restore the original 12 demo records and exact totals. History and export controls were inspected at 320 and 390 px without horizontal overflow.
+- No production financial records, PINs or recovery keys were used. Ledger schema, storage key, vault encryption and recovery logic are unchanged. Existing optional browser scripts were updated for current asset names and text PDF format; they were not run in this session.
+- Build, standalone packaging and syntax checks pass. Current shell: app-v8.mjs, styles-v9.css, report-v3.mjs and cache v15-20261030-pdf-history. Earlier versioned assets remain available.
+
+---
+
 # Version 1.6.1 — lighter downloads for slow connections
 
 The visible app files are cached before installation icons and optional tools. New script and stylesheet filenames keep old offline versions coherent. PNG icons use lossless compression with identical decoded pixels. Records, PIN protection, recovery, calculations and exports are unchanged.

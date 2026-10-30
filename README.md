@@ -1,5 +1,15 @@
 # BizTrack
 
+## History downloads — 1.7.0
+
+History opens on all dates and shows the active filters, matching count and totals. Download PDF exports every matching record, including records beyond the first 100 shown on screen. Settings → Backups → Download full history exports all dates for the selected currency. Reports use the same local PDF tool.
+
+PDFs include the business name, period, filters, complete descriptions, totals and page numbers. Most text is selectable and searchable with an embedded local Noto Sans font; unsupported scripts or emoji use local image fallback. Each PDF contains one currency, with no conversion, and supports up to 5,000 records. JSON backups remain the format for restoring records.
+
+Entries on the same date keep their saved insertion order through edits and backups. Undo restores a batch of deletions for 30 seconds. A quiet backup reminder appears after seven days without a backup. Existing ledger storage, PIN encryption and recovery are unchanged.
+
+Current release assets are app-v8.mjs, styles-v9.css and report-v3.mjs with offline cache v15-20261030-pdf-history. Earlier asset versions remain available for already-open pages. Apply **Update app** when offered and wait for **Ready offline** before relying on offline access.
+
 ## First-visit loading recovery
 
 The inline loading and Retry bootstrap starts immediately after the loading screen, before the remaining page arrives. Slow document downloads no longer delay the recovery timer. Main-module, dependency and initialization failures show Retry instead of leaving startup stuck. No financial records, PINs or recovery keys are read or changed by this bootstrap.
@@ -68,7 +78,7 @@ The real ledger starts empty. **Explore a demo** opens disposable sample data wi
 - Encrypted locked-copy backups, available even while locked. Restore requires that copy's matching PIN or recovery key. Backup replacement first downloads a safety copy of the current saved data.
 - One-tap **Day / Night** switch in the header. Follows the device appearance initially, remembers your choice and synchronizes between tabs. The preference uses its own `biztrack.theme.v1` key; financial records are unchanged.
 - Clearer secondary text, larger phone inputs and transaction categories visible in phone lists.
-- Record sales and expenses; edit entries or delete with a 15-second Undo.
+- Record sales and expenses; edit entries or restore a batch of deletions with a 30-second Undo.
 - View sales, expenses, net profit, profit margin, activity and expense categories.
 - Filter by today, a selected month, or all time; search transactions by description or category.
 - XAF is the default. XOF, USD, EUR, GBP, NGN, GHS, KES and ZAR are optional.
@@ -76,7 +86,7 @@ The real ledger starts empty. **Explore a demo** opens disposable sample data wi
 - Amounts use integer minor units to avoid decimal rounding errors. XAF and XOF require whole amounts; other supported currencies accept two decimal places.
 - Download JSON backups containing every currency and your preferences. Restore validates the file and shows a confirmation before replacing your ledger.
 - Export the filtered transaction view or a date-range report as CSV.
-- Download actual PDF reports with a summary and paginated transactions. PDFs use embedded page images for Unicode support; text in PDFs is not selectable. CSV retains complete text. PDF export supports up to 5,000 entries per report.
+- Download filtered History, full history or date-range reports as PDF with a summary and paginated transactions. PDFs preserve complete descriptions and use searchable text with local image fallback for unsupported glyphs. Each PDF supports up to 5,000 entries in one currency.
 - All fonts, scripts, styles and logos are local. There are no analytics or remote dependencies.
 
 ## Data and privacy
