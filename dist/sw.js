@@ -1,6 +1,6 @@
 const BASE=new URL('./',self.location.href);
 const PREFIX='biztrack:'+BASE.pathname+':';
-const CACHE=PREFIX+'v15-20261030-pdf-history';
+const CACHE=PREFIX+'v16-20261031-dashboard-preview';
 const INDEX=new URL('index.html',BASE).href;
 const OPEN=new URL('open.html',BASE).href;
 const SHELL=['index.html','app-v8.mjs','styles-v9.css','report-v3.mjs','icon.svg','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png'].map(p=>new URL(p,BASE).href);
