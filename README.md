@@ -1,5 +1,9 @@
 # BizTrack
 
+## Friendly workspace — 1.8.0
+
+The dashboard presents Sales, Expenses and Net profit/loss in order with an explicit period and currency. Phone layouts keep Add sale and Add expense above the navigation. Entry date, category and currency start expanded; amount and descriptions have larger controls. History has All/Sales/Expenses chips and date headings. Reports offer Today, This week (Monday–Sunday), This month and Last month without changing custom date ranges or export rules. An empty real ledger offers optional business setup and first-entry guidance; it disappears after the first entry. These changes preserve the ledger, PIN, recovery, backups, currencies and browser installation helper. No remote service or subscription was added. Current assets: app-v10.mjs, styles-v10.css and cache v18-20261101-friendly-workspace. Earlier app/style assets remain available for already-open copies.
+
 ## Browser installation — 1.7.1
 
 Install app opens an available native browser install prompt directly. How to install shows instructions separately, with a canonical open/copy link when no prompt is available. The helper shares FlowTrack’s browser-specific paths for Safari on Mac, iPhone/iPad, Firefox on Android/Windows, desktop Chrome/Edge, Samsung Internet, other Android browsers and in-app browser contexts. Real native events take priority over browser-name hints. Browsers control installation, confirmation and icon placement; no website can silently install itself or guarantee installation on every browser. Safari on Mac uses separate app storage, explained in its help. The helper does not inspect or change business records, PINs or browser storage.
