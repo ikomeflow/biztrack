@@ -1,5 +1,9 @@
 # BizTrack
 
+## Minimal screens — 1.8.1
+
+Overview leads with Sales, Expenses, Profit/Loss and recent entries. Counts, margin, charts and categories are available under Insights. New entries begin with amount and description; More holds date, category and currency, and opens automatically for edits. History keeps search and type chips, with Export and Totals disclosures. Report presets remain visible; custom dates/currency sit under a disclosure. First-use setup is one compact row, and Install joins the collapsed Settings sections. Financial data, complete exports, PIN/recovery, backup/restore, installation and readable touch controls remain intact. Current assets: app-v11.mjs, styles-v11.css, cache v19-20261101-minimal. Earlier assets remain for already-open copies.
+
 ## Friendly workspace — 1.8.0
 
 The dashboard presents Sales, Expenses and Net profit/loss in order with an explicit period and currency. Phone layouts keep Add sale and Add expense above the navigation. Entry date, category and currency start expanded; amount and descriptions have larger controls. History has All/Sales/Expenses chips and date headings. Reports offer Today, This week (Monday–Sunday), This month and Last month without changing custom date ranges or export rules. An empty real ledger offers optional business setup and first-entry guidance; it disappears after the first entry. These changes preserve the ledger, PIN, recovery, backups, currencies and browser installation helper. No remote service or subscription was added. Current assets: app-v10.mjs, styles-v10.css and cache v18-20261101-friendly-workspace. Earlier app/style assets remain available for already-open copies.

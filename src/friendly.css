@@ -8,9 +8,6 @@ nav a{font-size:13px}
 .period-tabs button{font-size:12px;min-height:44px}
 .filter-right input,.filter-right select{min-height:44px;font-size:14px}
 .filter-right select{min-width:82px}
-.overview-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 14px;flex-wrap:wrap}
-.overview-summary h2{font-size:15px;font-weight:600}
-.overview-summary p{font-size:12px;line-height:1.5;color:var(--link);background:var(--soft);border:1px solid var(--line);padding:7px 11px;border-radius:999px}
 .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .stat-card,.profit-card{min-width:0;min-height:170px;border-radius:16px;padding:23px}
 .stat-label,.profit-card .stat-label{font-size:13px;font-weight:600}
@@ -18,7 +15,6 @@ nav a{font-size:13px}
 .stat-foot,.profit-bottom{font-size:12px;line-height:1.6}
 .profit-tag{font-size:11px;white-space:nowrap}
 .profit-bottom{position:relative;z-index:1;flex-wrap:wrap;gap:8px}
-.profit-art{opacity:.4;pointer-events:none}
 .legend{font-size:11px}
 .chart-caption{font-size:11px}
 .grid-line span,.bar-date{font-size:10px}
@@ -41,16 +37,6 @@ nav a{font-size:13px}
 .history-type-chips{flex:0 1 auto}
 .report-presets{padding-top:4px}
 .preset-note{font-size:12px;color:var(--muted);line-height:1.6;margin:10px 0 4px}
-.first-use-guide{padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:16px;margin:0 0 24px}
-.welcome-tag{display:block;color:var(--link);font-size:12px;font-weight:600;margin-bottom:8px}
-.first-use-guide h2{font-size:22px}
-.first-use-guide p{font-size:13px;color:var(--muted);line-height:1.6;margin:7px 0 0}
-.first-use-guide ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;padding:20px 0 0;margin:20px 0 0;border-top:1px solid var(--line)}
-.first-use-guide li{display:flex;gap:10px;align-items:flex-start;min-width:0}
-.first-use-guide strong{font-size:13px;line-height:1.6;display:block}
-.step-number{flex:0 0 28px;width:28px;height:28px;display:grid;place-items:center;background:var(--soft);color:var(--link);font-size:12px;font-weight:650;border-radius:50%}
-.first-use-guide .text-button{font-size:12px;min-height:44px;text-align:left}
-.guide-actions{display:flex;gap:16px;flex-wrap:wrap}
 .mobile-quick-actions{display:none}
 #entry-dialog{width:520px;padding:26px}
 #entry-dialog .field-label,#entry-dialog .form-grid label{font-size:13px}
@@ -75,9 +61,6 @@ nav a{font-size:13px}
  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .profit-card{grid-column:1/-1;min-height:154px}
  .stat-card .stat-value,.profit-card .stat-value{font-size:32px}
- .first-use-guide ol{grid-template-columns:1fr;gap:14px}
- .first-use-guide li{gap:14px}
- .guide-actions{gap:20px}
 }
 @media(max-width:700px){
  nav a{font-size:11px}
@@ -86,9 +69,6 @@ nav a{font-size:13px}
  .page-heading{margin-bottom:20px}
  .filter-bar{gap:10px}
  .filter-right input,.filter-right select{font-size:16px;min-height:44px}
- .overview-summary{gap:9px;margin:20px 0 13px}
- .overview-summary h2{font-size:14px}
- .overview-summary p{font-size:12px}
  .stats-grid{gap:12px;margin-bottom:20px}
  .stat-card{padding:18px 15px;min-height:148px}
  .profit-card{padding:22px 20px;min-height:157px}
@@ -113,10 +93,6 @@ nav a{font-size:13px}
  .history-type-chips button{flex:1;padding:9px}
  .filter-chips button{font-size:12px}
  .transaction-filters>.button{font-size:12px}
- .first-use-guide{padding:20px;margin-bottom:20px}
- .first-use-guide h2{font-size:21px}
- .first-use-guide ol{padding-top:16px;margin-top:16px}
- .first-use-guide .text-button{font-size:13px}
  .mobile-quick-actions{display:flex;position:fixed;left:0;right:0;bottom:calc(69px + env(safe-area-inset-bottom));z-index:30;gap:10px;padding:10px 18px;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -4px 18px #10264e0a}
  .mobile-quick-actions[hidden]{display:none}
  .mobile-quick-actions .button{flex:1;min-height:46px;justify-content:center;font-size:14px;padding:10px}
@@ -131,3 +107,71 @@ nav a{font-size:13px}
  .report-presets button{flex:1 0 calc(50% - 7px)}
 }
 @media(max-width:360px){.entry-amount{max-width:118px;font-size:12px}.stat-card{padding:16px 12px}.stat-label{font-size:12px}.profit-tag{font-size:10px}}
+
+/* Minimal daily screens: balances and recent entries first. */
+.topbar{height:60px}
+main{padding-top:24px}
+.page-heading{margin-bottom:18px}
+.stat-card,.profit-card{min-height:130px;padding:20px;border-radius:14px}
+.stat-card .stat-value,.profit-card .stat-value{font-size:30px;margin:18px 0 0;line-height:1.25}
+.stat-label,.profit-card .stat-label{font-size:12px}
+.first-use-guide{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;margin-bottom:18px;border-radius:12px}
+.first-use-guide h2{font-size:14px}
+.first-use-guide .text-button{font-size:13px;min-height:44px}
+.overview-insights{margin-top:18px}
+.overview-insights>summary,.report-entries>summary{display:flex;align-items:center;justify-content:space-between;min-height:54px;padding:14px 20px;font-size:14px;font-weight:600;cursor:pointer;list-style:none}
+.overview-insights>summary::-webkit-details-marker,.report-entries>summary::-webkit-details-marker{display:none}
+.overview-insights>summary:after,.report-entries>summary:after{content:'+';font-size:22px;font-weight:400;color:var(--muted)}
+.overview-insights[open]>summary:after,.report-entries[open]>summary:after{content:'−'}
+.overview-insights .insights-grid{padding:0 18px 18px;margin:0;gap:14px}
+.overview-insights .panel{box-shadow:none}
+.insight-metrics{display:flex;gap:10px 20px;flex-wrap:wrap;padding:0 20px;color:var(--muted);font-size:12px}
+.insight-formula{padding:7px 20px 18px;color:var(--muted);font-size:12px;line-height:1.6}
+.workspace-disclosure>summary:focus-visible,.install-data>summary:focus-visible{outline:3px solid #8ab6ff;outline-offset:3px;border-radius:8px}
+#recent-list .entry-kind{display:none}
+.entry-row{min-height:70px}
+.export-menu{margin-left:auto}
+.export-menu>summary{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 14px;border:1px solid var(--line);border-radius:9px;font-size:13px;color:var(--ink);cursor:pointer;background:var(--surface);list-style:none}
+.export-menu>summary:after{content:'⌄';margin-left:10px;color:var(--muted)}
+.export-menu>summary::-webkit-details-marker{display:none}
+.export-menu>div{display:flex;gap:8px;padding-top:8px}
+.history-totals{padding:0 22px 14px}
+.history-totals>summary,.report-options>summary,.install-data>summary{font-size:12px;color:var(--muted);cursor:pointer;min-height:44px;display:flex;align-items:center;gap:10px;list-style:none}
+.history-totals>summary:after,.report-options>summary:after,.install-data>summary:after{content:'+';margin-left:auto;font-size:18px}
+.history-totals[open]>summary:after,.report-options[open]>summary:after,.install-data[open]>summary:after{content:'−'}
+.history-totals .history-summary{padding:0;margin:0;font-size:12px}
+.report-options{margin-top:14px;border-top:1px solid var(--line)}
+.report-options .form-grid label{margin-top:8px}
+.report-options>summary::-webkit-details-marker,.history-totals>summary::-webkit-details-marker,.install-data>summary::-webkit-details-marker{display:none}
+.report-presets{padding-top:2px}
+.report-config .report-buttons{margin-top:14px}
+.report-entries{margin-bottom:20px}
+.install-settings-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:12px}
+.install-settings-actions .install-help-link{margin:0}
+.install-data{margin-top:14px;border-top:1px solid var(--line)}
+.install-dialog .install-data p{margin-bottom:0}
+@media(max-width:700px){
+ .topbar{height:56px}
+ main{padding-top:18px}
+ .page-heading h1{font-size:26px}
+ .stats-grid{gap:10px;margin-bottom:18px}
+ .stat-card{min-height:110px;padding:17px 14px}
+ .stat-card .stat-value{font-size:clamp(20px,5.9vw,28px);margin:16px 0 0}
+ .profit-card{min-height:116px;padding:18px}
+ .profit-card .stat-value{font-size:30px;margin:15px 0 0}
+ .overview-insights .insights-grid{padding:0 12px 14px}
+ .overview-insights .panel-heading{padding-left:14px;padding-right:14px}
+ .overview-insights>summary,.report-entries>summary{padding:13px 16px}
+ .insight-metrics{padding:0 16px;gap:8px 16px}
+ .insight-formula{padding-left:16px;padding-right:16px}
+ .history-totals{padding:0 16px 12px}
+ .history-type-chips{flex:1 1 190px}
+ .export-menu{flex:0 0 auto;margin-left:0}
+ .export-menu>div{flex-wrap:wrap}
+ #recent-list .entry-row{min-height:68px;align-items:center}
+ #recent-list .entry-desc{grid-row:1 / span 2;align-items:center}
+ #recent-list .entry-amount{align-self:center;padding-top:0}
+ .workspace .help-text{font-size:12px}
+ .report-presets button{flex:1 0 calc(50% - 7px)}
+ .first-use-guide{padding:10px 16px}
+}
