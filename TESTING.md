@@ -1,3 +1,7 @@
+# Version 1.8.0 — Friendly workspace
+
+Calendar helper tests cover Monday/Sunday, leap years, year transitions, date bounds, history headings and explicit overview scope. Existing financial, encryption, recovery, history export, installation and offline tests remain in the suite. All 67 unit tests passed. Real Chrome demo checks covered saving a dated sale and expense, date headings, combined type/search filters and reset, weekly/monthly/custom report ranges, the PDF-downloaded confirmation, currency decimal steps, Net loss, and 320/390px layouts in light/dark mode. First-use layout was reviewed with a static copy of built markup; setup continues through the existing encrypted Settings form. No real business ledger was unlocked. Physical mobile keyboards and the downloaded PDF file were not inspected.
+
 # Version 1.7.1 — Browser-specific installation
 
 Installation coverage is adapted from the tested FlowTrack helper: native-event priority, first-tap prompting, browser routing, desktop-style iPadOS, in-app contexts, cancellation/failure, installed state, canonical-link copying and keyboard focus. Browser-family checks simulate identities/events; they do not prove installation on physical Android, iOS or macOS devices. Available real-browser checks use Chrome.
