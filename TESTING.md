@@ -1,3 +1,7 @@
+# Version 1.7.1 — Browser-specific installation
+
+Installation coverage is adapted from the tested FlowTrack helper: native-event priority, first-tap prompting, browser routing, desktop-style iPadOS, in-app contexts, cancellation/failure, installed state, canonical-link copying and keyboard focus. Browser-family checks simulate identities/events; they do not prove installation on physical Android, iOS or macOS devices. Available real-browser checks use Chrome.
+
 # Version 1.7.0 - full history PDF and clearer History
 
 - 38 unit tests pass, including same-day insertion order through edits and backup round-trips, 250-record complete exports, exact large amounts, batch Undo, backup reminders, PDF currency separation and cancellation, and matching offline asset versions.

@@ -3,7 +3,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 const options={absWorkingDir:fileURLToPath(new URL('.',import.meta.url)),bundle:true,minify:true,format:'esm',target:['es2022'],tsconfigRaw:{},legalComments:'none'};
-await build({...options,entryPoints:['src/app.mjs'],outfile:'dist/app-v8.mjs',external:['./report-v3.mjs'],define:{__BIZTRACK_PORTABLE__:'false'}});
+await build({...options,entryPoints:['src/app.mjs'],outfile:'dist/app-v9.mjs',external:['./report-v3.mjs'],define:{__BIZTRACK_PORTABLE__:'false'}});
 await build({...options,entryPoints:['src/report.mjs'],outfile:'dist/report-v3.mjs',loader:{'.ttf':'base64'},external:['html2canvas','dompurify','canvg'],legalComments:'eof'});
 await writeFile('dist/report-licenses.txt',await readFile('node_modules/jspdf/LICENSE','utf8')+'\n\nNoto Sans font:\n'+await readFile('src/NotoSans-OFL.txt','utf8'));
 const css=await transform(await readFile('src/styles.css','utf8'),{loader:'css',minify:true,target:['es2022']});await writeFile('dist/styles-v9.css',css.code);
