@@ -1,0 +1,133 @@
+/* Daily tasks stay readable without changing the compact PIN screen. */
+.workspace .button{font-size:13px;min-height:44px}
+.workspace h2{font-size:17px;line-height:1.4}
+.workspace .panel-heading p,.workspace .help-text{font-size:13px;line-height:1.65}
+.workspace .field-label,.workspace .form-grid label{font-size:13px}
+.workspace .field-label input,.workspace .field-label select,.workspace .form-grid input{font-size:16px;min-height:46px}
+nav a{font-size:13px}
+.period-tabs button{font-size:12px;min-height:44px}
+.filter-right input,.filter-right select{min-height:44px;font-size:14px}
+.filter-right select{min-width:82px}
+.overview-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 14px;flex-wrap:wrap}
+.overview-summary h2{font-size:15px;font-weight:600}
+.overview-summary p{font-size:12px;line-height:1.5;color:var(--link);background:var(--soft);border:1px solid var(--line);padding:7px 11px;border-radius:999px}
+.stats-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.stat-card,.profit-card{min-width:0;min-height:170px;border-radius:16px;padding:23px}
+.stat-label,.profit-card .stat-label{font-size:13px;font-weight:600}
+.stat-card .stat-value,.profit-card .stat-value{font-size:clamp(23px,2.4vw,34px);line-height:1.2;letter-spacing:-1px;margin:21px 0 16px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.stat-foot,.profit-bottom{font-size:12px;line-height:1.6}
+.profit-tag{font-size:11px;white-space:nowrap}
+.profit-bottom{position:relative;z-index:1;flex-wrap:wrap;gap:8px}
+.profit-art{opacity:.4;pointer-events:none}
+.legend{font-size:11px}
+.chart-caption{font-size:11px}
+.grid-line span,.bar-date{font-size:10px}
+.category-top{font-size:12px}.category-top span{font-size:11px}
+.entry-title,.entry-amount{font-size:14px}
+.entry-date,.entry-kind{font-size:12px}
+.category-pill{font-size:11px}
+.entry-row{min-height:80px}
+.empty-state h3{font-size:17px}
+.empty-state p{font-size:13px}
+.empty-actions{flex-wrap:wrap}
+.history-date-heading{font-size:12px;font-weight:650;color:var(--muted);background:var(--bg);padding:12px 23px;margin:0;border-top:1px solid var(--line)}
+.history-status .help-text{font-size:12px}
+.filter-chips{display:flex;gap:6px;flex-wrap:wrap}
+.filter-chips button{min-height:44px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);font-size:13px;font-weight:550}
+.filter-chips button[aria-pressed=true]{color:var(--link);background:var(--soft);border-color:var(--link)}
+.filter-chips button:hover{background:var(--soft);color:var(--ink)}
+.transaction-filters .search-box{flex:1 1 250px}
+.search-box input{font-size:15px;min-height:44px}
+.history-type-chips{flex:0 1 auto}
+.report-presets{padding-top:4px}
+.preset-note{font-size:12px;color:var(--muted);line-height:1.6;margin:10px 0 4px}
+.first-use-guide{padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:16px;margin:0 0 24px}
+.welcome-tag{display:block;color:var(--link);font-size:12px;font-weight:600;margin-bottom:8px}
+.first-use-guide h2{font-size:22px}
+.first-use-guide p{font-size:13px;color:var(--muted);line-height:1.6;margin:7px 0 0}
+.first-use-guide ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;list-style:none;padding:20px 0 0;margin:20px 0 0;border-top:1px solid var(--line)}
+.first-use-guide li{display:flex;gap:10px;align-items:flex-start;min-width:0}
+.first-use-guide strong{font-size:13px;line-height:1.6;display:block}
+.step-number{flex:0 0 28px;width:28px;height:28px;display:grid;place-items:center;background:var(--soft);color:var(--link);font-size:12px;font-weight:650;border-radius:50%}
+.first-use-guide .text-button{font-size:12px;min-height:44px;text-align:left}
+.guide-actions{display:flex;gap:16px;flex-wrap:wrap}
+.mobile-quick-actions{display:none}
+#entry-dialog{width:520px;padding:26px}
+#entry-dialog .field-label,#entry-dialog .form-grid label{font-size:13px}
+#entry-dialog input,#entry-dialog select{font-size:16px;min-height:46px}
+#entry-dialog .amount-field{min-height:76px;background:var(--bg)}
+#entry-dialog .amount-field input{font-size:36px;min-height:72px;line-height:1.2;background:transparent}
+#entry-dialog .amount-field>span{font-size:15px;color:var(--ink)}
+#entry-dialog .type-toggle span{min-height:44px;font-size:14px}
+#entry-dialog .entry-options{margin-top:20px}
+#entry-dialog .entry-options>summary{font-size:13px;min-height:44px}
+#entry-dialog .entry-options .form-grid{margin-top:0}
+#entry-dialog .dialog-actions .button{font-size:13px;min-height:44px}
+#entry-dialog .form-error{font-size:13px}
+#entry-dialog .icon-button{width:44px;height:44px}
+#entry-dialog .dialog-heading{margin-bottom:18px}
+#entry-dialog .type-toggle{margin-bottom:18px}
+.workspace .setting-action h3{font-size:14px}
+.workspace .setting-action p,.workspace .privacy-copy p{font-size:13px}
+.workspace .setting-action small{font-size:12px}
+@media(min-width:951px){.profit-card{grid-column:auto}}
+@media(max-width:950px){
+ .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .profit-card{grid-column:1/-1;min-height:154px}
+ .stat-card .stat-value,.profit-card .stat-value{font-size:32px}
+ .first-use-guide ol{grid-template-columns:1fr;gap:14px}
+ .first-use-guide li{gap:14px}
+ .guide-actions{gap:20px}
+}
+@media(max-width:700px){
+ nav a{font-size:11px}
+ main{padding-left:18px;padding-right:18px}
+ .page-heading .heading-actions{display:none}
+ .page-heading{margin-bottom:20px}
+ .filter-bar{gap:10px}
+ .filter-right input,.filter-right select{font-size:16px;min-height:44px}
+ .overview-summary{gap:9px;margin:20px 0 13px}
+ .overview-summary h2{font-size:14px}
+ .overview-summary p{font-size:12px}
+ .stats-grid{gap:12px;margin-bottom:20px}
+ .stat-card{padding:18px 15px;min-height:148px}
+ .profit-card{padding:22px 20px;min-height:157px}
+ .stat-card .stat-value{font-size:clamp(20px,6vw,29px);line-height:1.25;margin:19px 0 15px}
+ .profit-card .stat-value{font-size:32px;margin:18px 0 12px}
+ .stat-foot,.profit-bottom{font-size:12px}
+ .workspace .panel-heading h2{font-size:16px}
+ .legend{font-size:10px;gap:8px}
+ .chart-caption{font-size:11px}
+ .grid-line span,.bar-date{font-size:9px}
+ .entry-row{padding:16px;gap:4px 10px;min-height:90px}
+ .entry-title,.entry-amount{font-size:13px}
+ .entry-kind{font-size:11px}
+ .entry-row .entry-date{font-size:11px}
+ .entry-amount{max-width:140px}
+ .category-top,.category-top span{font-size:12px}
+ .history-date-heading{padding:12px 16px;font-size:13px}
+ .transaction-filters{padding:16px;gap:12px}
+ .transaction-filters .search-box{flex:1 0 100%;min-width:0}
+ .transaction-filters .search-box input{font-size:16px}
+ .history-type-chips{flex:1 0 100%}
+ .history-type-chips button{flex:1;padding:9px}
+ .filter-chips button{font-size:12px}
+ .transaction-filters>.button{font-size:12px}
+ .first-use-guide{padding:20px;margin-bottom:20px}
+ .first-use-guide h2{font-size:21px}
+ .first-use-guide ol{padding-top:16px;margin-top:16px}
+ .first-use-guide .text-button{font-size:13px}
+ .mobile-quick-actions{display:flex;position:fixed;left:0;right:0;bottom:calc(69px + env(safe-area-inset-bottom));z-index:30;gap:10px;padding:10px 18px;background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -4px 18px #10264e0a}
+ .mobile-quick-actions[hidden]{display:none}
+ .mobile-quick-actions .button{flex:1;min-height:46px;justify-content:center;font-size:14px;padding:10px}
+ .workspace:has(#mobile-actions:not([hidden])) footer{margin-bottom:calc(145px + env(safe-area-inset-bottom))}
+ body:has(#mobile-actions:not([hidden])) .toast{bottom:calc(150px + env(safe-area-inset-bottom))}
+ #entry-dialog{padding:22px 20px;max-height:calc(100dvh - 24px)}
+ #entry-dialog .amount-field input{font-size:34px}
+ #entry-dialog .form-grid{gap:12px}
+ #entry-dialog .dialog-actions{gap:8px;flex-wrap:wrap}
+ #entry-dialog .dialog-actions .button{font-size:13px;padding:11px 14px}
+ .report-presets{gap:7px}
+ .report-presets button{flex:1 0 calc(50% - 7px)}
+}
+@media(max-width:360px){.entry-amount{max-width:118px;font-size:12px}.stat-card{padding:16px 12px}.stat-label{font-size:12px}.profit-tag{font-size:10px}}
