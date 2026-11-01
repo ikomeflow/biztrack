@@ -1,5 +1,11 @@
 # BizTrack
 
+## Browser installation — 1.7.1
+
+Install app opens an available native browser install prompt directly. How to install shows instructions separately, with a canonical open/copy link when no prompt is available. The helper shares FlowTrack’s browser-specific paths for Safari on Mac, iPhone/iPad, Firefox on Android/Windows, desktop Chrome/Edge, Samsung Internet, other Android browsers and in-app browser contexts. Real native events take priority over browser-name hints. Browsers control installation, confirmation and icon placement; no website can silently install itself or guarantee installation on every browser. Safari on Mac uses separate app storage, explained in its help. The helper does not inspect or change business records, PINs or browser storage.
+
+Current install release: app-v9.mjs with offline cache v17-20261101-browser-install. Manifest identity, home-screen icons, dashboard share preview and business-record formats are preserved. The portable builder uses the matching entry filename and keeps the online installation path available.
+
 ## History downloads — 1.7.0
 
 History opens on all dates and shows the active filters, matching count and totals. Download PDF exports every matching record, including records beyond the first 100 shown on screen. Settings → Backups → Download full history exports all dates for the selected currency. Reports use the same local PDF tool.
