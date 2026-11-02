@@ -1,5 +1,13 @@
 # BizTrack
 
+## Customers and invoices (1.10)
+
+A blue Net cash card, central phone Add button, six-month trends and an absolute prior-period comparison keep daily tracking concise. History now groups Transactions, Invoices and Customers. Contact information, invoice dates and other optional fields stay behind short disclosures.
+
+Create invoices and customer records, record partial payments, see unpaid/overdue balances and download customer-facing invoice PDFs. An invoice counts toward cash sales only when a payment is recorded; each payment creates one linked sale atomically. Net cash means payments received minus expenses paid. Full accounting profit, stock, taxes and owner withdrawals are not calculated.
+
+Existing records and PIN/recovery remain on the same device and app address. Legacy data upgrades in memory; customers, invoices and payment references are included in schema-2 JSON and encrypted backups. Older app versions cannot read schema 2. Keep private backups and use the latest app. Read [BUSINESS-RELEASE.md](BUSINESS-RELEASE.md) for validation and rollback details.
+
 ## Mobile PDF saving — 1.9.0
 
 History, full-history downloads and Reports prepare PDFs locally, then offer Save to mobile when file sharing is supported, alongside Download PDF. Choose a save destination in the device share sheet. Cancellation keeps the prepared PDF ready; locking or changing the ledger prevents exporting a stale copy. Browsers without file sharing retain normal downloads. Every PDF page prints Produced by Futura Group at the bottom right, with centered page numbers. New app-v12.mjs, styles-v12.css, report-v4.mjs and a complete offline cache preserve old installations and saved records.
@@ -118,7 +126,7 @@ The PIN/recovery implementation is adapted from FlowTrack under its MIT license.
 
 Set up recovery under **Settings → PIN & recovery → Set up recovery**, save the key separately, and tick the saved-key confirmation. There is no universal PIN or support override. Without the correct PIN or a previously activated recovery key, the locked records cannot be recovered. Save a locked copy while you look for the correct credentials. JSON backups and CSV/PDF exports are readable files even when the browser ledger is protected; keep exported files private. PIN protection cannot be switched off in the app.
 
-Profit is recorded sales minus recorded expenses. BizTrack is a simple cash tracker: it does not model inventory, invoices, receivables, taxes or depreciation.
+Net cash is recorded payments received minus recorded expenses paid. Unpaid invoices are tracked separately and do not count as cash until paid. BizTrack does not calculate inventory valuation, taxes, depreciation or full accounting profit.
 
 ## Publish on GitHub Pages
 
