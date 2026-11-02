@@ -1,9 +1,9 @@
 const BASE=new URL('./',self.location.href);
 const PREFIX='biztrack:'+BASE.pathname+':';
-const CACHE=PREFIX+'v19-20261101-minimal';
+const CACHE=PREFIX+'v20-20261102-pdf-save';
 const INDEX=new URL('index.html',BASE).href;
 const OPEN=new URL('open.html',BASE).href;
-const SHELL=['index.html','app-v11.mjs','styles-v11.css','report-v3.mjs','icon.svg','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png'].map(p=>new URL(p,BASE).href);
+const SHELL=['index.html','app-v12.mjs','styles-v12.css','report-v4.mjs','icon.svg','manifest.webmanifest','icon-192.png','icon-512.png','icon-maskable-512.png'].map(p=>new URL(p,BASE).href);
 // Save the visible screen first; installation icons and optional tools must not
 // compete with its download on a slow connection. Both stages must finish.
 const CORE=SHELL.filter(url=>/\/(?:index\.html|app-v\d+\.mjs|styles-v\d+\.css|icon\.svg)$/.test(url));
