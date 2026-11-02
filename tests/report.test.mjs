@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {createReportPDF} from '../dist/report-v3.mjs';
+import {createReportPDF} from '../dist/report-v4.mjs';
 const entry=(i=0,patch={})=>({id:String(i),date:'2026-10-30',currency:'XAF',type:'sale',category:'Product sales',amount:123456,description:'Café / São Tomé '+i,...patch});
 const raw=bytes=>Buffer.from(bytes).toString('latin1');
 test('PDF uses a real embedded text font and valid page/trailer structures',async()=>{
