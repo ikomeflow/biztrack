@@ -1,5 +1,10 @@
 # BizTrack
 
+## Mobile PDF saving — 1.9.0
+
+History, full-history downloads and Reports prepare PDFs locally, then offer Save to mobile when file sharing is supported, alongside Download PDF. Choose a save destination in the device share sheet. Cancellation keeps the prepared PDF ready; locking or changing the ledger prevents exporting a stale copy. Browsers without file sharing retain normal downloads. Every PDF page prints Produced by Futura Group at the bottom right, with centered page numbers. New app-v12.mjs, styles-v12.css, report-v4.mjs and a complete offline cache preserve old installations and saved records.
+
+
 ## Minimal screens — 1.8.1
 
 Overview leads with Sales, Expenses, Profit/Loss and recent entries. Counts, margin, charts and categories are available under Insights. New entries begin with amount and description; More holds date, category and currency, and opens automatically for edits. History keeps search and type chips, with Export and Totals disclosures. Report presets remain visible; custom dates/currency sit under a disclosure. First-use setup is one compact row, and Install joins the collapsed Settings sections. Financial data, complete exports, PIN/recovery, backup/restore, installation and readable touch controls remain intact. Current assets: app-v11.mjs, styles-v11.css, cache v19-20261101-minimal. Earlier assets remain for already-open copies.
