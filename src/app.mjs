@@ -1,9 +1,10 @@
+import {initPDFSave} from './pdf-save.mjs';
 import {reportPreset,historyDateLabel,overviewScope} from './ui.mjs';
 import {initInstall} from './install.mjs';
 initInstall({name:'BizTrack',onlineURL:'https://biztrack.ikomeflow.com/'});
 import {LedgerVault,isVault,validateVault} from '../dist/vault.mjs?v=1.2.1';
 import {STORAGE_KEY,CURRENCIES,CATEGORIES,today,emptyLedger,money,validDate,toMinor,validateLedger,selectEntries,totals,escapeHTML as esc,csv,periodRange,demoLedger,backupDue,replaceEntry,restoreDeletions} from '../dist/core.mjs?v=1.2.1';
-const makePDF=(...args)=>import('./report-v3.mjs').then(module=>module.createReportPDF(...args));
+const makePDF=(...args)=>import('./report-v4.mjs').then(module=>module.createReportPDF(...args));
 const $=s=>document.querySelector(s);
 const icons={grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',arrows:'<path d="M4 7h16m-5-5 5 5-5 5M20 17H4m5-5-5 5 5 5"/>',chart:'<path d="M4 3v18h17M9 17v-5m5 5V7m5 10V3"/>',settings:'<path d="m9 3-1 3-3 1-2 4 2 2v4l4 3 3-1 3 1 4-3v-4l2-2-2-4-3-1-1-3Z"/><circle cx="12" cy="12" r="3"/>',shield:'<path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 2-2.5 2-2.5 4m0 3h.01"/>',plus:'<path d="M12 5v14M5 12h14"/>',minus:'<path d="M5 12h14"/>',trend:'<path d="m3 17 6-6 4 3 8-9m-6 0h6v6"/>','arrow-up-right':'<path d="M6 18 18 6M6 6h12v12"/>','arrow-down-left':'<path d="M18 6 6 18M6 6v12h12"/>',donut:'<path d="M11 3a9 9 0 1 0 10 10H11Z"/><path d="M15 3v6h6a7 7 0 0 0-6-6Z"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',close:'<path d="m6 6 12 12M6 18 18 6"/>',edit:'<path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-4-4L5 15Z"/>',bag:'<path d="M5 7h14l2 14H3ZM8 8V6a4 4 0 0 1 8 0v2"/>'};
 function icon(name){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name]||icons.grid}</svg>`;}
@@ -73,11 +74,12 @@ const actions={
  'reset-history':()=>{historyPeriod='all';historyType='all';$('#search').value='';refresh();},
  'search-all-dates':()=>{historyPeriod='all';refresh();}
 };
+const pdfSave=initPDFSave({download,notify:toast});
 async function exportPDF(entries,options,kind){
  if(pdfBusy||(!unlocked&&!demo))return;pdfBusy=true;const ticket=operation,snapshot=ledger,sample=demo,buttons=[...document.querySelectorAll('[data-pdf]')];
  const current=()=>ticket===operation&&ledger===snapshot&&(unlocked||demo);
  for(const button of buttons){button.disabled=true;button.textContent='Preparing PDF…';}
- try{const bytes=await makePDF(entries,{...options,sample,isCurrent:current,onProgress:(done,total)=>{for(const button of buttons)button.textContent=total?`Preparing ${done} / ${total}…`:'Preparing PDF…';}});if(!current())return;const covered=options.from&&options.to?`${options.from}_to_${options.to}`:'all-dates';download(bytes,`biztrack-${sample?'demo-':''}${kind}-${options.currency}-${covered}-${today()}.pdf`,'application/pdf');toast('PDF downloaded. Keep JSON backups to restore records.');}
+ try{const bytes=await makePDF(entries,{...options,sample,isCurrent:current,onProgress:(done,total)=>{for(const button of buttons)button.textContent=total?`Preparing ${done} / ${total}…`:'Preparing PDF…';}});if(!current())return;const covered=options.from&&options.to?`${options.from}_to_${options.to}`:'all-dates';pdfSave.prepare(bytes,`biztrack-${sample?'demo-':''}${kind}-${options.currency}-${covered}-${today()}.pdf`,{isCurrent:current});toast('PDF ready. Choose where to save it.');}
  catch(e){if(current()){if(view==='reports')$('#report-error').textContent=e.message;toast(e.message);}}
  finally{pdfBusy=false;for(const button of buttons){button.disabled=false;button.innerHTML=icon('download')+button.dataset.pdf;}}
 }
@@ -118,6 +120,7 @@ function showGate(){
 }
 function clearRecovery(){vault.discardPrepared(pendingRecovery);pendingRecovery=null;$('#recovery-key').value='';$('#recovery-saved').checked=false;}
 function clearSensitive(){
+ pdfSave.clear();
  historyLimit=reportLimit=PAGE_SIZE;historyKey=reportKey='';$('#first-use-guide').hidden=true;$('#mobile-actions').hidden=true;$('#overview-scope').textContent='';
  $('#entry-options').open=false;for(const disclosure of document.querySelectorAll('.workspace-disclosure'))disclosure.open=false;for(const section of document.querySelectorAll('.settings-section'))section.open=false;
  clearRecovery();clearTimeout(toastTimer);clearUndo();historyPeriod='all';editing=null;confirmCallback=null;

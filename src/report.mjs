@@ -79,7 +79,7 @@ export async function createReportPDF(rows,{businessName='My business',currency=
  check();onProgress(rows.length,rows.length);
  const pages=doc.getNumberOfPages();
  for(let page=1;page<=pages;page++){
-  doc.setPage(page);rule(bottom+14);text(`Private / Generated on this device / ${localDate(generatedAt)}`,left,bottom+31,8,muted);text(`${page} / ${pages}`,right,bottom+31,8,muted,'right');
+  doc.setPage(page);rule(bottom+14);text(`Private / Generated on this device / ${localDate(generatedAt)}`,left,bottom+31,8,muted);text(`${page} / ${pages}`,doc.internal.pageSize.getWidth()/2,bottom+31,8,muted,'center');text('Produced by Futura Group',right,bottom+31,8,muted,'right');
  }
  return doc.output('arraybuffer');
 }
